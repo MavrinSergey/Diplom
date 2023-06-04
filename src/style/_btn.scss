@@ -1,0 +1,24 @@
+.open-aside {
+    cursor: pointer;
+    background: $bg;
+    color: #000;
+    border: none;
+}
+
+.open-aside:hover {
+    background-color: $btn-hover;
+}
+
+.btn {
+    background-color: $btn;
+    border-color: $bg-form;
+}
+
+.btn:hover {
+    background-color: $btn-hover;
+}
+
+.btn-right {
+    margin-right: 10vw;
+    float: right;
+}
