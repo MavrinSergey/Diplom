@@ -1,2 +1,4 @@
-/node_modules
-/desktop.ini
+node_modules/
+dist/
+.vscode/
+package-lock.json
