@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,24 +9,154 @@
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="img/favicon.png" type="image/png">
 
-  <title>Webpack</title>
+  <title>Scrum</title>
 </head>
+
 <body>
-  <header>
-    <h1>Webpack</h1>
-  </header>
+  <div class="window">
+    <header class="header">
+      <!-- Навигация в шапке -->
+      <div class="header__menu">
+        <button class="open-aside btn btn-primary" id="#">☰</button>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary">
+            Кнопка
+          </button>
+          <button type="button" class="btn btn-primary">
+            Еще одна
+          </button>
+          <button type="button" class="btn btn-primary">
+            Их может быть больше
+          </button>
+        </div>
+        <div class="btn-group btn-right" role="group" aria-label="Basic example">
+          <button id="callFormLogin" type="button" class="btn btn-primary">
+            Войти
+          </button>
+          <button id="callFormRegistr" type="button" class="btn btn-primary">
+            Регистрация
+          </button>
+        </div>
+      </div>
 
-  <main>
-    <div class="img"></div>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-    </ul>
-  </main>
+      <!-- Вторая часть хедера -->
+      <div class="header__info">
+        <h1>Header</h1>
+      </div>
+    </header>
+    <!-- Форма входа -->
+    <form class="form form__entry">
+      <h2 class="form__title">Вход</h2>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Логин</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Пароль</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" />
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+        <label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
 
-  <footer>
-    <div class="image"></div>
-  </footer>
+    <!-- Форма регистрации -->
+    <form class="form form__registr">
+      <h2 class="form__title">Регистрация</h2>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Почта</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Пароль</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Подтвердите Пароль</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" />
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+        <label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
+      </div>
+      <div class="g-recaptcha" data-sitekey="6LdyGgwmAAAAADPKy4MhWlnx9MfUJ-IBXW5WM7Z9"></div>
+      <!-- МЕСТО ДЛЯ КАПЧИ -->
+      <button type="submit" class="btn btn-primary">
+        Регистрация
+      </button>
+    </form>
+    <main class="main">
+      <!-- Доска -->
+      <section class="board row">
+        <div class="column col-sm-3">
+          <!-- Название колонки -->
+          <div class="board-column-header" draggable>
+            В работу
+          </div>
+          <!-- Содержимое колонки -->
+          <div class="board-column-content-wrapper">
+            <div class="board-item" draggable>
+              <div class="board-item-content">Item #1</div>
+            </div>
+            <div class="board-item" draggable>
+              <div class="board-item-content">Item #2</div>
+            </div>
+            <div class="board-item" draggable>
+              <div class="board-item-content">Item #3</div>
+            </div>
+            <div class="board-item" draggable>
+              <div class="board-item-content">Item #4</div>
+            </div>
+            <div class="board-item" draggable>
+              <div class="board-item-content">Item #5</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column col-sm-3">
+          <div class="board-column-header" draggable>
+            В работе
+          </div>
+          <div class="board-column-content-wrapper"></div>
+        </div>
+        <div class="column col-sm-3">
+          <div class="board-column-header" draggable>
+            На согласовании
+          </div>
+          <div class="board-column-content-wrapper"></div>
+        </div>
+        <div class="column col-sm-3">
+          <div class="board-column-header" draggable>
+            Завершено
+          </div>
+          <div class="board-column-content-wrapper"></div>
+        </div>
+      </section>
+
+      <!-- Сотрудники -->
+      <section class="employee">Список сотрудников</section>
+    </main>
+
+    <footer class="footer">
+      <h2>Footer - а он нам нужент?</h2>
+    </footer>
+  </div>
+  <!-- Бокавая навигация -->
+  <aside id="#" class="sidebar">
+    <a href="#" class="employee-section">Сотрудники</a>
+    <a href="#" class="bord-section">Доска</a>
+    <a href="#" class="">Active sprints</a>
+    <a href="#" class="">Reports</a>
+    <a href="#" class="">Issues</a>
+    <a href="#" class="">Releases</a>
+    <a href="#" class="">Project settings</a>
+  </aside>
+
+  <!-- Модальные окна -->
+
+
 </body>
+
 </html>
