@@ -11,6 +11,7 @@ export function getEntryForm() {
       Логин
     </label>
     <input 
+      name="email"
       type="email" 
       class="form-control" 
       id="email" 
@@ -21,12 +22,14 @@ export function getEntryForm() {
       Пароль
     </label>
     <input 
+      name="password"
       type="password" 
       class="form-control" 
       id="password"/>
   </div>
   <div class="mb-3 form-check">
   <input 
+    name="keep"
     type="checkbox" 
     class="form-check-input" 
     id="exampleCheck1"/>
