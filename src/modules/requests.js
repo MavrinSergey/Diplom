@@ -1,4 +1,4 @@
-function sendRequestPOST(method, url, body = null) {
+function sendRequestPOST(method, url, body) {
     const headers = {
         'Content-Type': 'application/json'
     }

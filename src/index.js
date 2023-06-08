@@ -1,18 +1,17 @@
 import './index.html';
 import './index.scss';
-import { mult, sum } from './modules/calc';
 import { aside } from './modules/aside';
 import { dnd } from './modules/dnd';
-import { formSignReg } from './modules/formSignReg';
-import { createModalReg, getEntryForm, entryWithEmailAndPassword } from './modules/formSignReg';
-import { createModal, handleFormSubmit } from './modules/utils';
+import { getEntryForm } from './modules/formSign';
+import { createModal } from './modules/utils';
+import { sendRequestPOST } from './modules/requests';
 
 const requestURL = 'https://jsonplaceholder.typicode.com/users'
 const openEntry = document.getElementById("callFormLogin");
 
 
 openEntry.addEventListener("click", openModal);
-
+let body = 0;
 
 function openModal() {
     createModal('form__entry', getEntryForm());
@@ -28,23 +27,19 @@ function openModal() {
         const data = serializeForm(modal)
         let object = {};
         data.forEach((value, key) => object[key] = value);
-        const jsonData = JSON.stringify(object)
-        console.log(jsonData)
+        body = JSON.stringify(object)
+        console.log(body)
+    
     }
 }
 
 function serializeForm(formNode) {
     return new FormData(formNode)
 }
-const body = {
-    email: 'Mavrin',
-    password: 36
-}
 
-// sendRequestGet('GET', requestURL)
-// .then(data => console.log(data))
-// .catch(err => console.log(err))
 
 sendRequestPOST('POST', requestURL, body)
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+
+
