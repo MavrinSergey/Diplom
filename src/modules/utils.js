@@ -1,7 +1,13 @@
 export function createModal(title, content) {
-  const modal = document.createElement('form')
-  modal.classList.add('form', title)
+  const screener = document.createElement('div')
+  screener.classList.add('screener')
+  document.body.appendChild(screener)
+
+  const modal = document.createElement('div')
+  
+  modal.classList.add(title)
   modal.id = title
   modal.innerHTML = `${content}`
   document.body.appendChild(modal)
 }
+

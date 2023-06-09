@@ -7,30 +7,52 @@ import { createModal } from './modules/utils';
 import { sendRequestPOST } from './modules/requests';
 
 const requestURL = 'https://jsonplaceholder.typicode.com/users'
-const openEntry = document.getElementById("callFormLogin");
+const openFormSign = document.getElementById("open-form-sign");
 
 
-openEntry.addEventListener("click", openModal);
+openFormSign.addEventListener("click", openModal);
 let body = 0;
 
 function openModal() {
-    createModal('form__entry', getEntryForm());
-    const modal = document.getElementById('form__entry');
-    modal.querySelector('#form-entry-close')
-        .addEventListener('click', () => {
-            modal.remove()
-        })
-    modal.addEventListener('submit', handleFormSubmit)
+    createModal('form', getEntryForm());
+    const screener = document.querySelector('.screener');
+    const modal = document.getElementById('form')
+    const wrapper = document.querySelector('.wrapper');
+    const signIn = document.getElementById('sign-in');
+
+    const signUpLink = document.querySelector('.signUp-link')
+    const signInLink = document.querySelector('.signIn-link')
+
+
+    screener.addEventListener('click', dropModalWindow);
+
+    function dropModalWindow() {
+        screener.remove();
+        modal.remove();
+    }
+
+    signUpLink.addEventListener('click', () => {
+        wrapper.classList.add('animate-signIn')
+        wrapper.classList.remove('animate-signUp')
+    });
+
+    signInLink.addEventListener('click', () => {
+        wrapper.classList.add('animate-signUp')
+        wrapper.classList.remove('animate-signIn')
+    });
+
+    signIn.addEventListener('submit', handleFormSubmit)
 
     function handleFormSubmit(event) {
         event.preventDefault()
-        const data = serializeForm(modal)
+        const data = serializeForm(signIn)
         let object = {};
         data.forEach((value, key) => object[key] = value);
         body = JSON.stringify(object)
         console.log(body)
-    
+
     }
+
 }
 
 function serializeForm(formNode) {
@@ -39,7 +61,7 @@ function serializeForm(formNode) {
 
 
 sendRequestPOST('POST', requestURL, body)
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
 
 

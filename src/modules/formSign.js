@@ -1,42 +1,54 @@
 export function getEntryForm() {
   return `
-<div class="form__entry-header">
-  <span class="form__title">Вход</span>
-  <picture id="form-entry-close" class="form__entry-close">
-    <img src="./img/close.png" alt="Close">
-  </picture>
-</div>
-<div class="mb-3">
-  <label for="exampleInputEmail1" class="form-label">
-    Логин
-  </label>
-  <input 
-    name="email"
-    type="email" 
-    class="form-control" 
-    id="email" 
-    aria-describedby="emailHelp"/>
-</div>
-<div class="mb-3">
-  <label for="exampleInputPassword1" class="form-label">
-    Пароль
-  </label>
-  <input 
-    name="password"
-    type="password" 
-    class="form-control" 
-    id="password"/>
-</div>
-<div class="mb-3 form-check">
-<input 
-  name="keep"
-  type="checkbox" 
-  class="form-check-input" 
-  id="exampleCheck1"/>
-<label class="form-check-label" for="exampleCheck1">
-  Запомнить меня
-</label>
-</div>
-<button type="submit" class="btn btn-primary">Войти</button>
+    <div class="wrapper">
+
+        <div class="form-wrapper sign-up" id="sign-up">
+            <form action="">
+                <h2 class="sign__title">SignUp</h2>
+                <div class="sign__inputBox">
+                    <input type="text" required>
+                    <label for="">Username</label>
+                </div>
+                <div class="sign__inputBox">
+                    <input type="email" required>
+                    <label for="">Email</label>
+                </div>
+                <div class="sign__inputBox">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="sign__submit btn">Login</button>
+                <div class="sign__link">
+                    <p>Already have an acount?
+                        <a href="#" class="signIn-link">Sign In</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-wrapper sign-in" id="sign-in">
+            <form action="">
+                <h2 class="sign__title">Login</h2>
+                <div class="sign__inputBox">
+                    <input type="email" required>
+                    <label for="">Username</label>
+                </div>
+                <div class="sign__inputBox">
+                    <input type="password" required>
+                    <label>Enter password</label>
+                </div>
+                <div class="sign__forgot_pass">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="sign__submit btn">Login</button>
+                <div class="sign__link">
+                    <p>Don't have an acount?
+                        <a href="#" class="signUp-link">SignUp</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
 `
 }
