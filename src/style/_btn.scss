@@ -1,29 +1,25 @@
 .open-aside {
-    cursor: pointer;
-    background: $btn;
-    color: #000;
-    border: none;
-}
-
-.open-aside:hover {
-    background: $btn-hover;
+width: 40px;
 }
 
 .btn {
+    height: 40px;
     background-color: $btn;
-    border: none;
     font-size: 16px;
     color: #fff;
     font-weight: 500;
-    cursor: pointer;
     border-radius: 5px;
     border: none;
     outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .btn:hover {
-    background-color: $btn-hover;
-    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+.btn:active {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn-right {
