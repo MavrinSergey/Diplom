@@ -1,23 +1,23 @@
-function sendRequestPOST(method, url, body) {
-    const headers = {
-        'Content-Type': 'application/json'
-    }
+export function sendRequest(method, url, body = null) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest()
 
-    return fetch(url, {
-        method: method,
-        body: JSON.stringify(body),
-        headers: headers
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json()
+        xhr.open(method, url)
+
+        xhr.responseType = 'json' // позволяет получать из респонса данные в json формате
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.onload = () => {
+            if (xhr.status >= 400) {
+                reject(xhr.response);
+            } else {
+                resolve(xhr.response); // получаем данные в строке
+            }
         }
 
-        return response.json()
-        .then(error => {
-            const e = new Error('Что-то пошло не так')
-            e.data = error
-            throw e
-        })
+        xhr.onerror = () => {
+            reject(xhr.response);
+        }
+
+        xhr.send(JSON.stringify(body))
     })
 }

@@ -27,14 +27,14 @@ export function getEntryForm() {
         </div>
 
         <div class="form-wrapper sign-in" id="sign-in">
-            <form action="">
+            <form action="" name="signin">
                 <h2 class="sign__title">Login</h2>
                 <div class="sign__inputBox">
-                    <input type="email" required>
+                    <input type="email" name="email" required>
                     <label for="">Username</label>
                 </div>
                 <div class="sign__inputBox">
-                    <input type="password" required>
+                    <input type="password" name="password" required>
                     <label>Enter password</label>
                 </div>
                 <div class="sign__forgot_pass">

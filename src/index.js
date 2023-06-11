@@ -4,14 +4,12 @@ import { aside } from './modules/aside';
 import { dnd } from './modules/dnd';
 import { getEntryForm } from './modules/formSign';
 import { createModal } from './modules/utils';
-import { sendRequestPOST } from './modules/requests';
+import { sendRequest } from './modules/requests';
 
-const requestURL = 'https://jsonplaceholder.typicode.com/users'
+const requestURL = 'https://jsonplaceholder.typicode.com/users';
 const openFormSign = document.getElementById("open-form-sign");
 
-
 openFormSign.addEventListener("click", openModal);
-let body = 0;
 
 function openModal() {
     createModal('form', getEntryForm());
@@ -20,9 +18,15 @@ function openModal() {
     const wrapper = document.querySelector('.wrapper');
     const signIn = document.getElementById('sign-in');
 
-    const signUpLink = document.querySelector('.signUp-link')
-    const signInLink = document.querySelector('.signIn-link')
-
+    wrapper.addEventListener('click', (event) => {
+        if (event.target.classList.contains('signUp-link')) {
+            wrapper.classList.add('animate-signIn')
+            wrapper.classList.remove('animate-signUp')
+        } else if (event.target.classList.contains('signIn-link')) {
+            wrapper.classList.add('animate-signUp')
+            wrapper.classList.remove('animate-signIn')
+        }
+    })
 
     screener.addEventListener('click', dropModalWindow);
 
@@ -31,37 +35,19 @@ function openModal() {
         modal.remove();
     }
 
-    signUpLink.addEventListener('click', () => {
-        wrapper.classList.add('animate-signIn')
-        wrapper.classList.remove('animate-signUp')
-    });
+    signIn.addEventListener('submit', submitForm);
 
-    signInLink.addEventListener('click', () => {
-        wrapper.classList.add('animate-signUp')
-        wrapper.classList.remove('animate-signIn')
-    });
-
-    signIn.addEventListener('submit', handleFormSubmit)
-
-    function handleFormSubmit(event) {
-        event.preventDefault()
-        const data = serializeForm(signIn)
-        let object = {};
-        data.forEach((value, key) => object[key] = value);
-        body = JSON.stringify(object)
-        console.log(body)
-
+    function submitForm(event) {
+        let obj = {};
+        // Отменяем стандартное поведение браузера с отправкой формы
+        event.preventDefault();
+        // event.target — это HTML-элемент form
+        let formData = new FormData(event.target);
+        // Собираем данные формы в объект
+        formData.forEach((value, key) => obj[key] = value);
+        console.log(obj);
+        sendRequest('POST', requestURL, obj)
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
     }
-
 }
-
-function serializeForm(formNode) {
-    return new FormData(formNode)
-}
-
-
-sendRequestPOST('POST', requestURL, body)
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
-
-
