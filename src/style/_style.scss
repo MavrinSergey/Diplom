@@ -21,7 +21,14 @@ body {
   overflow: hidden;
 }
 
-.header__info {
+.main__title {
   height: 15vh;
   text-align: center;
 }
+
+section {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
