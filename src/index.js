@@ -5,6 +5,7 @@ import { dnd } from './modules/dnd';
 import { getEntryForm } from './modules/formSign';
 import { createModal } from './modules/utils';
 import { sendRequest } from './modules/requests';
+import { Name } from './modules/Board';
 
 const requestURL = 'https://jsonplaceholder.typicode.com/users';
 const openFormSign = document.getElementById("open-form-sign");
@@ -40,19 +41,18 @@ function openModal() {
     signUp.addEventListener('submit', submitForm);
 
     function submitForm(event) {
-        let obj = {};
+        const obj = {};
         // Отменяем стандартное поведение браузера с отправкой формы
         event.preventDefault();
         // event.target — это HTML-элемент form
-        let formData = new FormData(event.target);
+        const formData = new FormData(event.target);
         // Собираем данные формы в объект
         formData.forEach((value, key) => obj[key] = value);
         console.log(obj);
         sendRequest('POST', requestURL, obj)
-            .then(data => console.log(data))
+            .then(data => Name(data))
             .catch(err => console.log(err))
         event.target.reset(); /* Сбрасывает форму */
-
         dropModalWindow(); /* закрывает окно*/
     }
 }
