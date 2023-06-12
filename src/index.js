@@ -13,6 +13,7 @@ const openFormSign = document.getElementById("open-form-sign");
 openFormSign.addEventListener("click", openModal);
 
 function openModal() {
+    createModal('screener');
     createModal('form', getEntryForm());
     const screener = document.querySelector('.screener');
     const modal = document.getElementById('form')
