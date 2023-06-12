@@ -1,6 +1,5 @@
 .board {
     height: 75vh;
-    border: 1px solid;
 }
 
 .row {
@@ -31,8 +30,13 @@
 .board-column-content-wrapper {
     margin: 0;
     height: 70vh;
-    overflow-y: auto;
     overflow-x: none;
+    overflow-y: hidden;
+}
+
+.board-column-content-wrapper:hover {
+    overflow-y: auto;
+    margin-left: 10px;
 }
 
 .board-item {

@@ -17,6 +17,7 @@ function openModal() {
     const modal = document.getElementById('form')
     const wrapper = document.querySelector('.wrapper');
     const signIn = document.getElementById('sign-in');
+    const signUp = document.getElementById('sign-up');
 
     wrapper.addEventListener('click', (event) => {
         if (event.target.classList.contains('signUp-link')) {
@@ -36,6 +37,7 @@ function openModal() {
     }
 
     signIn.addEventListener('submit', submitForm);
+    signUp.addEventListener('submit', submitForm);
 
     function submitForm(event) {
         let obj = {};
@@ -47,7 +49,10 @@ function openModal() {
         formData.forEach((value, key) => obj[key] = value);
         console.log(obj);
         sendRequest('POST', requestURL, obj)
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+        event.target.reset(); /* Сбрасывает форму */
+
+        dropModalWindow(); /* закрывает окно*/
     }
 }

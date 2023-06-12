@@ -7,6 +7,22 @@ body {
   background: linear-gradient(#2196f3, #e91e63);
   font-family: $ff;
   position: relative;
+
+  scroll-behavior: auto;
+  scrollbar-color: #458245; /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-width: thin;  /* толщина */
+
+}
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 10px; /* ширина для вертикального скролла */
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: $bg;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
 }
 
 .window {
