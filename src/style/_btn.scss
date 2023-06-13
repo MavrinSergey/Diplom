@@ -13,17 +13,27 @@
     outline: none;
     cursor: pointer;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-}
 
-.btn:hover {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-}
+    &:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
 
-.btn:active {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    &:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    &:active {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
 }
 
 .btn-right {
     margin-right: 15vw;
     float: right;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+        margin: 11px 20px;
+    }
 }

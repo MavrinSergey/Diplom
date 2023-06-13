@@ -3,14 +3,24 @@ import './index.scss';
 import { aside } from './modules/aside';
 import { dnd } from './modules/dnd';
 import { getEntryForm } from './modules/formSign';
-import { createModal } from './modules/utils';
+import { createModal, createMainTitle, createSection, createNameUser } from './modules/utils';
 import { sendRequest } from './modules/requests';
-import { Name } from './modules/Board';
+import { getScrumBoard } from './modules/Board';
 
 const requestURL = 'https://jsonplaceholder.typicode.com/users';
 const openFormSign = document.getElementById("open-form-sign");
+const openScrumBoard = document.getElementById("open-ScrumBoard");
 
 openFormSign.addEventListener("click", openModal);
+openScrumBoard.addEventListener("click", openBoard);
+
+function openBoard() {
+    if (!document.getElementById("board")) {
+        createMainTitle('ScrumBoard');
+        createSection("board", getScrumBoard());
+    }
+
+}
 
 function openModal() {
     createModal('screener');
@@ -56,4 +66,13 @@ function openModal() {
         event.target.reset(); /* Сбрасывает форму */
         dropModalWindow(); /* закрывает окно*/
     }
+}
+
+function Name(params) {
+    console.log(params);
+    // const test = '{"email": "mavrin_sergei@list.ru", "password": "123", "id": "11"}';
+    // const obj = JSON.parse(JSON.parse(params));
+    // console.log(obj);
+    createNameUser(params.email);
+    openBoard();
 }

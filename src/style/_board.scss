@@ -2,10 +2,10 @@
     height: 75vh;
 }
 
-.row {
-    margin: 0;
-    height: 75vh;
-}
+// .row {
+//     margin: 0;
+//     height: 75vh;
+// }
 
 .column,
 .col-sm-3 {
@@ -15,10 +15,9 @@
     border-right: 1px dotted #000;
     padding: 0;
     text-align: center;
-}
-
-.col-sm-3:last-child {
-    border-right: none;
+    &:last-child {
+        border-right: none;
+    }
 }
 
 .board-column-header {
@@ -32,11 +31,10 @@
     height: 70vh;
     overflow-x: none;
     overflow-y: hidden;
-}
-
-.board-column-content-wrapper:hover {
-    overflow-y: auto;
-    margin-left: 10px;
+    &:hover {
+        overflow-y: auto;
+        margin-left: 10px;
+    }
 }
 
 .board-item {

@@ -10,17 +10,18 @@
     transition: 0.5s;
     padding-top: 50px;
     display: none;
-}
 
-.sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: black;
-    display: block;
-    transition: 0.3s;
-}
+    a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        display: block;
+        transition: 0.3s;
 
-.sidebar a:hover {
-    color: white;
+        &:hover {
+            color: white;
+        }
+    }
+
 }
