@@ -3,24 +3,17 @@ import './index.scss';
 import { aside } from './modules/aside';
 import { dnd } from './modules/dnd';
 import { getEntryForm } from './modules/formSign';
-import { createModal, createMainTitle, createSection, createNameUser } from './modules/utils';
+import { createModal, createMainTitle, createSection, createNameUser, createItemBoard } from './modules/utils';
 import { sendRequest } from './modules/requests';
-import { getScrumBoard } from './modules/Board';
+import { getScrumBoard, getItemScrumBoard } from './modules/Board';
 
 const requestURL = 'https://jsonplaceholder.typicode.com/users';
+// const requestURL = 'https://localhost/login';
 const openFormSign = document.getElementById("open-form-sign");
 const openScrumBoard = document.getElementById("open-ScrumBoard");
 
 openFormSign.addEventListener("click", openModal);
 openScrumBoard.addEventListener("click", openBoard);
-
-function openBoard() {
-    if (!document.getElementById("board")) {
-        createMainTitle('ScrumBoard');
-        createSection("board", getScrumBoard());
-    }
-
-}
 
 function openModal() {
     createModal('screener');
@@ -70,9 +63,31 @@ function openModal() {
 
 function Name(params) {
     console.log(params);
-    // const test = '{"email": "mavrin_sergei@list.ru", "password": "123", "id": "11"}';
-    // const obj = JSON.parse(JSON.parse(params));
-    // console.log(obj);
-    createNameUser(params.email);
-    openBoard();
+    const test = `{"id_user": 1, 
+                    "name": "Sergey",
+                    "surname": "Mavrin",
+                    "id_task": [1, 2],
+                    "title": ["Заголовок задачи", "Заголовок задачи2"],
+                    "date_creation": ["14.06.2023", "14.06.2023"],
+                    "update_date": ["14.06.2023", "14.06.2023"],
+                    "status": ["agreement", "in-work"],
+                    "lead_time": ["31.06.2023", "30.06.2023"]}`;
+    const obj = JSON.parse(test);
+    console.log(obj);
+    if (!document.getElementById("btnSign").querySelector("a")) {
+        createNameUser(obj.name + obj.surname);
+    }
+    openBoard(obj);
+}
+
+function openBoard(js) {
+    if (!document.getElementById("board")) {
+        createMainTitle('ScrumBoard');
+        createSection("board", getScrumBoard());
+    }
+
+    for (let i = 0; i < js.title.length; i++) {
+        createItemBoard(js.status[i], getItemScrumBoard(js.title[i], js.date_creation[i], js.update_date[i], js.lead_time[i]))
+    }
+   
 }

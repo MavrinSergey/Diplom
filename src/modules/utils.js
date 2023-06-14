@@ -28,3 +28,12 @@ export function createNameUser(content = null) {
   name.innerHTML = `${content}`
   btnSign.insertBefore(name, openFormSign);
 }
+
+export function createItemBoard(col, content = null) {
+  const column = document.getElementById(col);
+  const item = document.createElement('div')
+  item.classList.add("board-item")
+  item.draggable = true;
+  item.innerHTML = `${content}`
+  column.appendChild(item);
+}
