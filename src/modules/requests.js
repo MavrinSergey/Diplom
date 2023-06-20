@@ -5,10 +5,11 @@ export function sendRequest(method, url, body = null) {
         xhr.open(method, url)
 
         xhr.responseType = 'json' // позволяет получать из респонса данные в json формате
+        xhr.setRequestHeader('Authorization', 'JWT ');
         xhr.setRequestHeader('Content-Type', 'application/json')
         xhr.onload = () => {
             if (xhr.status >= 400) {
-                reject(xhr.response);
+                reject(xhr.response); 
             } else {
                 resolve(xhr.response); // получаем данные в строке
             }

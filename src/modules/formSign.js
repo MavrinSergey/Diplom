@@ -1,9 +1,10 @@
 export function getEntryForm() {
+    
   return `
     <div class="wrapper">
 
         <div class="form-wrapper sign-up" id="sign-up">
-            <form action="">
+            <form action="#">
                 <h2 class="sign__title">SignUp</h2>
                 <div class="sign__inputBox">
                     <input type="text" name="user-name" required>
@@ -27,10 +28,10 @@ export function getEntryForm() {
         </div>
 
         <div class="form-wrapper sign-in" id="sign-in">
-            <form action="" name="signin">
+            <form action="#" name="signin">
                 <h2 class="sign__title">Login</h2>
                 <div class="sign__inputBox">
-                    <input type="email" name="email" required>
+                    <input type="text" name="username" required>
                     <label for="">Username</label>
                 </div>
                 <div class="sign__inputBox">

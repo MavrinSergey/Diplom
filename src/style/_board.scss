@@ -48,28 +48,34 @@
     margin: 0 auto 15px;
     width: 300px;
     height: 150px;
-// Карточка задачи
+
+    // Карточка задачи
     .board-item__content {
         pointer-events: none;
         user-select: none;
         -moz-user-select: none;
         -webkit-user-select: none;
         -ms-user-select: none;
+
         .board-item__content-header {
             text-align: left;
+
             h4 {
                 margin: 0 0 0 5px;
             }
         }
+
         .board-item__content-date {
             margin: 20px 0;
             display: flex;
             flex-direction: column;
-            align-items:flex-start;
+            align-items: flex-start;
             justify-content: flex-end;
+
             .board-item__content-date-row {
                 font-size: 15px;
                 margin: 6px;
+
                 h4 {
                     display: inline;
                     margin: 0;
@@ -79,8 +85,6 @@
     }
 
 }
-
-
 
 .placeholder {
     background-color: white;
