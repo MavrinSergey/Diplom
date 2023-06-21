@@ -92,7 +92,7 @@ function openBoard(js=null) {
     }
 
     for (let i = 0; i < js.length; i++) {
-        // console.log(js[i].title);
+        console.log(js[i].status);
         createItemBoard(js[i].status, getItemScrumBoard(js[i].title, js[i].date_creation, js[i].update_date, js[i].lead_time))
     }
     

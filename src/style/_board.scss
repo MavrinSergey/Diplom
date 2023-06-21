@@ -35,7 +35,7 @@
 
     &:hover {
         overflow-y: auto;
-        margin-left: 10px;
+        // margin-left: 10px;
     }
 }
 
@@ -73,7 +73,7 @@
             justify-content: flex-end;
 
             .board-item__content-date-row {
-                font-size: 15px;
+                font-size: 12px;
                 margin: 6px;
 
                 h4 {

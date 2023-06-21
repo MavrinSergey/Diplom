@@ -31,9 +31,13 @@ export function createNameUser(content = null) {
 
 export function createItemBoard(col, content = null) {
   const column = document.getElementById(col);
-  const item = document.createElement('div')
-  item.classList.add("board-item")
+  if (!column) {
+  throw new Error(`Column element with id ${col} not found in document`);
+  }
+  
+  const item = document.createElement('div');
+  item.classList.add("board-item");
   item.draggable = true;
-  item.innerHTML = `${content}`
+  item.innerHTML = `${content}`;
   column.appendChild(item);
-}
+  }
