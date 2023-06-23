@@ -20,7 +20,7 @@ export function getEntryForm() {
                 </div>
                 <button type="submit" class="sign__submit btn">Login</button>
                 <div class="sign__link">
-                    <p>Already have an acount?
+                    <p>Already have an account?
                         <a href="#" class="signIn-link">Sign In</a>
                     </p>
                 </div>
@@ -43,7 +43,7 @@ export function getEntryForm() {
                 </div>
                 <button type="submit" class="sign__submit btn">Login</button>
                 <div class="sign__link">
-                    <p>Don't have an acount?
+                    <p>Don't have an account?
                         <a href="#" class="signUp-link">SignUp</a>
                     </p>
                 </div>
