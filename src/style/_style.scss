@@ -4,7 +4,25 @@
 }
 
 body {
-  // background-color: $bg;
+  background: linear-gradient(#2196f3, #e91e63);
+  font-family: $ff;
+  position: relative;
+
+  scroll-behavior: auto;
+  scrollbar-color: #458245; /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-width: thin;  /* толщина */
+
+}
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 10px; /* ширина для вертикального скролла */
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: $bg;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
 }
 
 .window {
@@ -15,22 +33,18 @@ body {
 }
 
 .main {
-  // height: 75vh;
   width: 100%;
   overflow: hidden;
 }
 
-.header__info {
-  // border-bottom: 1px solid;
+.main__title {
   height: 15vh;
   text-align: center;
 }
 
-// .image {
-//   width: 500px;
-//   height: 300px;
-//   background-size: contain;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-image: url('../img/methed.jpg');
-// }
+section {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+

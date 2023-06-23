@@ -21,7 +21,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    filename: '[name].[contenthash].js',
+    filename: '[name].js',
     assetModuleFilename: 'assets/[name][ext]',
   },
   plugins: [
@@ -29,7 +29,7 @@ module.exports = {
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: '[name].css',
     }),
     // new CopyPlugin({
     //   patterns: [{ from: 'static', to: './' }],

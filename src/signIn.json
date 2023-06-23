@@ -1,0 +1,27 @@
+[
+    {
+        "id_user": "....",
+        "name": "....",
+        "surname": "...",
+        "tasks": {
+            "id_task": {
+                "title": "12.06.2023",
+                "date_creation": "...",
+                "update_date": "...",
+                "status": "...",
+                "lead_time": "..."
+            }
+        }
+    },
+    {
+        "id_user": "....",
+        "name": "....",
+        "surname": "...",
+        "id_task": [],
+        "title": [],
+        "date_creation": [],
+        "update_date": [],
+        "status": [],
+        "lead_time": []
+    }
+]

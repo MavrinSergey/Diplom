@@ -1,24 +1,39 @@
 .open-aside {
-    cursor: pointer;
-    background: $bg;
-    color: #000;
-    border: none;
-}
-
-.open-aside:hover {
-    background-color: $btn-hover;
+    width: 40px;
 }
 
 .btn {
+    height: 40px;
     background-color: $btn;
-    border-color: $bg-form;
-}
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 
-.btn:hover {
-    background-color: $btn-hover;
+    &:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    &:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    &:active {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
 }
 
 .btn-right {
-    margin-right: 10vw;
+    margin-right: 15vw;
     float: right;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+        margin: 11px 20px;
+    }
 }

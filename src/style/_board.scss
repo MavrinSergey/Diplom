@@ -1,31 +1,24 @@
-section {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-}
-
 .board {
-    /* display: none; */
     height: 75vh;
-    border: 1px solid;
 }
 
-.row {
-    margin: 0;
-    height: 75vh;
-
-}
+// .row {
+//     margin: 0;
+//     height: 75vh;
+// }
 
 .column,
 .col-sm-3 {
+    display: inline-block;
+    width: 24.7vw;
     margin-top: 5px;
     border-right: 1px dotted #000;
     padding: 0;
     text-align: center;
-}
 
-.col-sm-3:last-child {
-    border-right: none;
+    &:last-child {
+        border-right: none;
+    }
 }
 
 .board-column-header {
@@ -37,8 +30,13 @@ section {
 .board-column-content-wrapper {
     margin: 0;
     height: 70vh;
-    overflow-y: auto;
     overflow-x: none;
+    overflow-y: hidden;
+
+    &:hover {
+        overflow-y: auto;
+        // margin-left: 10px;
+    }
 }
 
 .board-item {
@@ -50,14 +48,42 @@ section {
     margin: 0 auto 15px;
     width: 300px;
     height: 150px;
-}
 
-.board-item-content {
-    pointer-events: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    // Карточка задачи
+    .board-item__content {
+        pointer-events: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+
+        .board-item__content-header {
+            text-align: left;
+
+            h4 {
+                margin: 0 0 0 5px;
+            }
+        }
+
+        .board-item__content-date {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+
+            .board-item__content-date-row {
+                font-size: 12px;
+                margin: 6px;
+
+                h4 {
+                    display: inline;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
 }
 
 .placeholder {
