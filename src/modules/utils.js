@@ -29,7 +29,7 @@ export function createNameUser(content = null) {
   btnSign.insertBefore(name, openFormSign);
 }
 
-export function createItemBoard(col, content = null) {
+export function createItemBoard(col = 'to-work', content = null, count = 0) {
   const column = document.getElementById(col);
   if (!column) {
     throw new Error(`Column element with id ${col} not found in document`);
@@ -37,7 +37,13 @@ export function createItemBoard(col, content = null) {
 
   const item = document.createElement('div');
   item.classList.add("board-item");
+  item.dataset.item = count;
+
   item.draggable = true;
   item.innerHTML = `${content}`;
+  item.addEventListener('click', () => {
+    const check = item.querySelector("input");
+    check.checked = !check.checked;
+  })
   column.appendChild(item);
 }

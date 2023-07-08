@@ -1,8 +1,8 @@
-import { getEntryForm } from './../widgets/formSign';
-import { createModal, createMainTitle, createSection, createNameUser, createItemBoard } from './../shared/utils';
-import { sendRequest } from './../shared/requests';
-import { getScrumBoard, getItemScrumBoard } from './../widgets/Board';
-import { bindDraggableCards } from './../features/dnd';
+import { getEntryForm } from './formSign';
+import { createModal, createNameUser} from './../utils';
+import { sendRequest } from './../requests';
+import { openBoard } from './../board/board';
+import { bindDraggableCards } from './../board/dnd';
 
 const requestURL = 'http://127.0.0.1:8000/api/token/';
 const requestTask = 'http://127.0.0.1:8000/api/v1/task/'
@@ -47,8 +47,8 @@ export function openModal() {
         const formData = new FormData(event.target);
         // Собираем данные формы в объект
         formData.forEach((value, key) => obj[key] = value);
-        console.log('с формы')
-        console.log(obj)
+        // console.log('с формы')
+        // console.log(obj)
         sendRequest('POST', requestURL, access, obj)
             .then(data => saveToken(data))
             .catch(err => console.log(err))
@@ -61,8 +61,8 @@ export function openModal() {
 function saveToken(data) {
     access = data.access
     refresh = data.refresh
-    console.log(access)
-    console.log(refresh)
+    // console.log(access)
+    // console.log(refresh)
     sendRequest('GET', requestTask, access)
         .then(data => Name(data))
         .catch(err => console.log(err))
@@ -72,18 +72,9 @@ function Name(params) {
     if (!document.getElementById("btnSign").querySelector("a")) {
         createNameUser(params.name + params.surname);
     }
-    console.log(params)
+    // console.log(params)
     openBoard(params);
     bindDraggableCards();
 }
 
-function openBoard(js = null) {
-    if (!document.getElementById("board")) {
-        createMainTitle('ScrumBoard');
-        createSection("board", getScrumBoard());
-    }
-    const tasks = js.results
-    for (let i = 0; i < tasks.length; i++) {
-        createItemBoard(tasks[i].status, getItemScrumBoard(tasks[i].title, tasks[i].date_creation, tasks[i].update_date, tasks[i].lead_time))
-    }
-}
+

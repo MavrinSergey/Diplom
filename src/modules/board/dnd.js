@@ -3,6 +3,16 @@ let placeholder;
 let isDraggingStarted = false;
 let movingElement;
 
+export function bindDraggableCards() {
+  const draggableElements = document.querySelectorAll(".board-item");
+  for (const draggableElement of draggableElements) {
+    draggableElement.onmousedown = onMouseDown;
+    draggableElement.ondragstart = () => {
+      return false;
+    };
+  }
+}
+
 const processEmptySections = () => {
   // Create not visible .board-item in empty sections to dnd work with it too
   document
@@ -124,16 +134,6 @@ const onMouseDown = (event) => {
   document.addEventListener("mousemove", onMouseMove);
   movingElement.onmouseup = onMouseUp;
 };
-
-export function bindDraggableCards() {
-  const draggableElements = document.querySelectorAll(".board-item");
-  for (const draggableElement of draggableElements) {
-    draggableElement.onmousedown = onMouseDown;
-    draggableElement.ondragstart = () => {
-      return false;
-    };
-  }
-}
 
 // Initial pageX and pageY of movingElement, at the moment the drag begins
 const initialMovingElementPageXY = {

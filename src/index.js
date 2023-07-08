@@ -1,7 +1,7 @@
 import './index.html';
 import './index.scss';
-import { aside } from './modules/widgets/aside';
-import { openModal } from './modules/processes/formSignIn-Up';
+import { board } from './modules/board/board';
+import { openModal } from './modules/sign/formSignIn-Up';
 
 const openFormSign  = document.getElementById("btnSign");
 const openScrumBoard  = document.getElementById("open-ScrumBoard");
