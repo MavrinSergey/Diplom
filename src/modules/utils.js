@@ -1,3 +1,6 @@
+import { bindDraggableCards } from './board/dnd';
+
+
 export function createModal(title, content = null) {
   const modal = document.createElement('div')
   modal.classList.add(title)
@@ -46,4 +49,5 @@ export function createItemBoard(col = 'to-work', content = null, count = 0) {
     check.checked = !check.checked;
   })
   column.appendChild(item);
+  bindDraggableCards();
 }

@@ -2,7 +2,6 @@ import { getEntryForm } from './formSign';
 import { createModal, createNameUser} from './../utils';
 import { sendRequest } from './../requests';
 import { openBoard } from './../board/board';
-import { bindDraggableCards } from './../board/dnd';
 
 const requestURL = 'http://127.0.0.1:8000/api/token/';
 const requestTask = 'http://127.0.0.1:8000/api/v1/task/'
@@ -74,7 +73,6 @@ function Name(params) {
     }
     // console.log(params)
     openBoard(params);
-    bindDraggableCards();
 }
 
 

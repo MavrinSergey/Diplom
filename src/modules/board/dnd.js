@@ -13,31 +13,44 @@ export function bindDraggableCards() {
   }
 }
 
+// const processEmptySections = () => {
+//   // Create not visible .board-item in empty sections to dnd work with it too
+//   document
+//     .querySelectorAll(".board-column-content-wrapper")
+//     .forEach((section) => {
+//       if (
+//         !section.querySelector(".board-item:not(.emptySectionHiddenLesson)")
+//       ) {
+//         if (section.querySelector(".emptySectionHiddenLesson")) {
+//           return;
+//         }
+//         const emptySectionHiddenLesson = document.createElement("div");
+//         emptySectionHiddenLesson.classList.add(
+//           "board-item",
+//           "emptySectionHiddenLesson"
+//         );
+//         section.append(emptySectionHiddenLesson);
+//       } else {
+//         const emptySectionHiddenLesson = section.querySelector(
+//           ".emptySectionHiddenLesson"
+//         );
+//         emptySectionHiddenLesson &&
+//           section.removeChild(emptySectionHiddenLesson);
+//       }
+//     });
+// };
 const processEmptySections = () => {
-  // Create not visible .board-item in empty sections to dnd work with it too
-  document
-    .querySelectorAll(".board-column-content-wrapper")
-    .forEach((section) => {
-      if (
-        !section.querySelector(".board-item:not(.emptySectionHiddenLesson)")
-      ) {
-        if (section.querySelector(".emptySectionHiddenLesson")) {
-          return;
-        }
-        const emptySectionHiddenLesson = document.createElement("div");
-        emptySectionHiddenLesson.classList.add(
-          "board-item",
-          "emptySectionHiddenLesson"
-        );
-        section.append(emptySectionHiddenLesson);
-      } else {
-        const emptySectionHiddenLesson = section.querySelector(
-          ".emptySectionHiddenLesson"
-        );
-        emptySectionHiddenLesson &&
-          section.removeChild(emptySectionHiddenLesson);
-      }
-    });
+  document.querySelectorAll(".board-column-content-wrapper").forEach((section) => {
+    const emptySectionHiddenLesson = section.querySelector(".emptySectionHiddenLesson");
+    const boardItem = section.closest(".board-item");
+    if (!boardItem && !emptySectionHiddenLesson) {
+      const emptySectionHiddenLesson = document.createElement("div");
+      emptySectionHiddenLesson.classList.add("board-item", "emptySectionHiddenLesson");
+      section.append(emptySectionHiddenLesson);
+    } else if (boardItem && emptySectionHiddenLesson) {
+      section.removeChild(emptySectionHiddenLesson);
+    }
+  });
 };
 processEmptySections();
 const createPlaceholder = () => {

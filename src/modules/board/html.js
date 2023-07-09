@@ -36,3 +36,13 @@ export function getItemScrumBoard(title = null, dateCreation = null, updateDate 
     </div>
   `
 }
+
+export function getHeaderSection(title = null) {
+    return `<div><h2>${title}</h2></div>
+            <div class="btn-group-section">
+                <button class="btn" id="add-task">Add task</button>
+                <button class="btn" id="delete">Delete</button>
+                <button class="btn">Еще одна</button>
+                <button class="btn">Их может быть больше</button>
+            </div>`
+}

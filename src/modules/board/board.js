@@ -1,6 +1,7 @@
 import { aside } from './aside';
 import { createMainTitle, createSection, createItemBoard } from "../utils";
-import { getScrumBoard, getItemScrumBoard } from "./boardHTML";
+import { getScrumBoard, getItemScrumBoard } from "./html";
+// import { bindDraggableCards } from './dnd';
 
 const addTask = document.getElementById("add-task");
 const deleteTask = document.getElementById("delete");
@@ -23,5 +24,6 @@ export function openBoard(js = null) {
     tasksList.forEach((task, index) => {
         createItemBoard(task.status, getItemScrumBoard(task.title, task.date_creation, task.update_date, task.lead_time, index + 1), index + 1);
     });
+    // bindDraggableCards();
 }
 
