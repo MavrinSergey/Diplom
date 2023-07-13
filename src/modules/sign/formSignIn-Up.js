@@ -37,10 +37,10 @@ export function openModal() {
         modal.remove();
     }
 
-    signIn.addEventListener('submit', submitFormLogin);
-    signUp.addEventListener('submit', submitFormRegistr);
+    signIn.addEventListener('submit', submitForm);
+    signUp.addEventListener('submit', submitForm);
 
-    function submitFormLogin(event) {
+    function submitForm(event) {
         const obj = {};
         // Отменяем стандартное поведение браузера с отправкой формы
         event.preventDefault();

@@ -39,17 +39,16 @@
     }
 }
 
+// Карточка задачи
 .board-item {
     background-color: #efffde;
     border: 1px dotted $btn-hover;
     border-radius: 5px;
     padding: 7px;
-    cursor: move;
     margin: 0 auto 15px;
     width: 300px;
     height: 150px;
 
-    // Карточка задачи
     .board-item__content {
         pointer-events: none;
         user-select: none;
@@ -60,9 +59,11 @@
         .board-item__content-header {
             text-align: left;
             position: relative;
+
             h4 {
                 margin: 0 0 0 5px;
             }
+
             input {
                 position: absolute;
                 right: 0;
@@ -90,12 +91,16 @@
             }
         }
     }
+}
 
+.board-item:active {
+    cursor: move;
 }
 
 .none {
     display: none;
 }
+
 .placeholder {
     background-color: white;
     margin-bottom: 0.5em;

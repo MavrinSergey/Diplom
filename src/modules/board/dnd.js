@@ -98,16 +98,6 @@ const onMouseUp = () => {
     movingElement.onmouseup = null;
     return;
   }
-  console.log(
-    "We move item",
-    movingElement,
-    "to column",
-    placeholder.closest(".column"),
-    "before item",
-    placeholder.nextElementSibling,
-    "after item",
-    placeholder.previousElementSibling
-  );
 
   placeholder.parentNode.insertBefore(movingElement, placeholder);
   Object.assign(movingElement.style, {
