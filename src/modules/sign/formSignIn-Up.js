@@ -1,10 +1,12 @@
 import { getEntryForm } from './formSign';
-import { createModal, createNameUser} from './../utils';
+import { createModal, createNameUser} from './utils';
 import { sendRequest } from './../requests';
 import { openBoard } from './../board/board';
 
-const requestURL = 'http://127.0.0.1:8000/api/token/';
-const requestTask = 'http://127.0.0.1:8000/api/v1/task/'
+const requestRegistr = 'http://127.0.0.1:8000/users/';
+const requestLogin = 'http://127.0.0.1:8000/api/token/';
+const requestTask = 'http://127.0.0.1:8000/api/v1/task/';
+
 let access = '';
 let refresh = '';
 
@@ -35,10 +37,10 @@ export function openModal() {
         modal.remove();
     }
 
-    signIn.addEventListener('submit', submitForm);
-    signUp.addEventListener('submit', submitForm);
+    signIn.addEventListener('submit', submitFormLogin);
+    signUp.addEventListener('submit', submitFormRegistr);
 
-    function submitForm(event) {
+    function submitFormLogin(event) {
         const obj = {};
         // Отменяем стандартное поведение браузера с отправкой формы
         event.preventDefault();
@@ -46,15 +48,14 @@ export function openModal() {
         const formData = new FormData(event.target);
         // Собираем данные формы в объект
         formData.forEach((value, key) => obj[key] = value);
-        // console.log('с формы')
-        // console.log(obj)
-        sendRequest('POST', requestURL, access, obj)
+        console.log('с формы')
+        console.log(obj)
+        sendRequest('POST', requestLogin, access, obj)
             .then(data => saveToken(data))
             .catch(err => console.log(err))
         event.target.reset(); /* Сбрасывает форму */
         dropModalWindow(); /* закрывает окно*/
     }
-
 }
 
 function saveToken(data) {
