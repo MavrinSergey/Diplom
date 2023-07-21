@@ -26,3 +26,13 @@ npm run build-prod
 ```shell
 npm run clear
 ```
+## Команды для Docker
+
+### Создание контенера
+docker build --tag diplom .
+
+### Создание контенера
+docker run -it --publish 3000:3000 diplom sh
+после запуска контенера попадаете в интерактивный терминал.
+#### Запуск сервера
+npm start
