@@ -22,11 +22,12 @@ export function getScrumBoard() {
   `
 }
 
-export function getItemScrumBoard(title = null, dateCreation = null, updateDate = null, leadTime = null) {
+export function getItemScrumBoard(title = null, dateCreation = null, updateDate = null, leadTime = null, id) {
     return `
     <div class="board-item__content">
     <div class="board-item__content-header">
         <h4>${title}</h4>
+        <input type="checkbox" name="${id}" id="${id}">
     </div>
     <div class="board-item__content-date">
         <div class="board-item__content-date-row">Дата создания: <span>${dateCreation}</span></div>
@@ -34,4 +35,14 @@ export function getItemScrumBoard(title = null, dateCreation = null, updateDate 
         <div class="board-item__content-date-row">Дата завершения: <span>${leadTime}</span></div>
     </div>
   `
+}
+
+export function getHeaderSection(title = null) {
+    return `<div><h2>${title}</h2></div>
+    <div class="btn-group-section">
+    <button class="btn" id="add-task">Add task</button>
+    <button class="btn" id="delete">Delete</button>
+    <button class="btn">Еще одна</button>
+    <button class="btn">Их может быть больше</button>
+    </div>`
 }
