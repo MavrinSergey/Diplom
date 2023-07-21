@@ -8,8 +8,9 @@ export function openBoard(js = null) {
         createSection("board", getScrumBoard());
     }
     const tasksList = js.results
-    tasksList.forEach((task, index) => {
-        createItemBoard(task.status, getItemScrumBoard(task.title, task.date_creation, task.update_date, task.lead_time, index + 1), index + 1);
+    console.log(tasksList)
+    tasksList.forEach((task) => {
+        createItemBoard(task.status, getItemScrumBoard(task.title, task.date_creation, task.update_date, task.lead_time, task.id), task.id);
     });
 
     const addTask = document.getElementById("add-task");

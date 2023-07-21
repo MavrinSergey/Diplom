@@ -48,8 +48,8 @@ export function openModal() {
         const formData = new FormData(event.target);
         // Собираем данные формы в объект
         formData.forEach((value, key) => obj[key] = value);
-        console.log('с формы')
-        console.log(obj)
+        // console.log('с формы')
+        // console.log(obj)
         sendRequest('POST', requestLogin, access, obj)
             .then(data => saveToken(data))
             .catch(err => console.log(err))

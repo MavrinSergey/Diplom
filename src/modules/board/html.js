@@ -22,12 +22,12 @@ export function getScrumBoard() {
   `
 }
 
-export function getItemScrumBoard(title = null, dateCreation = null, updateDate = null, leadTime = null, count) {
+export function getItemScrumBoard(title = null, dateCreation = null, updateDate = null, leadTime = null, id) {
     return `
     <div class="board-item__content">
     <div class="board-item__content-header">
         <h4>${title}</h4>
-        <input type="checkbox" name="${count}" id="${count}">
+        <input type="checkbox" name="${id}" id="${id}">
     </div>
     <div class="board-item__content-date">
         <div class="board-item__content-date-row">Дата создания: <span>${dateCreation}</span></div>
