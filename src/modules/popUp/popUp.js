@@ -1,4 +1,4 @@
-import { getSignForm } from "./html";
+import { getSignForm, getAddTaskForm } from "./html";
 import { createModal, createNameUser } from "./utils";
 import { sendRequest } from "../requests";
 import { openBoard } from "../board/board";
@@ -10,9 +10,17 @@ const requestTask = "http://127.0.0.1:8000/api/v1/task/";
 let access = "";
 let refresh = "";
 
-export function openModal() {
+export function openSign() {
+    openModal(getSignForm());
+}
+
+export function openAddTask() {
+    openModal(getAddTaskForm());
+}
+
+function openModal(getForm) {
     createModal("screener");
-    createModal("form", getSignForm());
+    createModal("form", getForm);
     const screener = document.querySelector(".screener");
     const modal = document.getElementById("form");
     const wrapper = document.querySelector(".wrapper");
