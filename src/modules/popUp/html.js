@@ -1,5 +1,4 @@
-export function getEntryForm() {
-
+export function getSignForm() {
     return `
     <div class="wrapper">
 
@@ -51,5 +50,5 @@ export function getEntryForm() {
         </div>
 
     </div>
-`
+`;
 }
