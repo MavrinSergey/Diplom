@@ -52,3 +52,37 @@ export function getSignForm() {
     </div>
 `;
 }
+
+export function getAddTaskForm() {
+    return `
+    <div class="wrapper">
+            <div class="form">
+                <div class="form-wrapper taskAdd" id="taskAdd">
+                    <form action="">
+                        <h2 class="taskAdd__title">Add descriptions task</h2>
+                        <div class="taskAdd__inputBox">
+                            <input type="text" name="title" required />
+                            <label for="title">Title</label>
+                        </div>
+                        <div class="taskAdd__inputBox">
+                            <input type="text" name="description" required />
+                            <label for="description">Description</label>
+                        </div>
+                        <div class="taskAdd__inputBox">
+                            <input type="date" name="date_creation" required />
+                        </div>
+                        <div class="taskAdd__inputBox">
+                            <input type="date" name="update_date" required />
+                        </div>
+                        <div class="taskAdd__inputBox">
+                            <input type="date" name="expiration" required />
+                        </div>
+                        <button type="submit" class="taskAdd__submit btn">
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+`;
+}
