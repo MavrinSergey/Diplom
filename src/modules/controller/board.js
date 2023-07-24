@@ -1,11 +1,19 @@
-import { aside } from "./aside";
-import { createMainTitle, createSection, createItemBoard } from "./utils";
-import { getScrumBoard, getItemScrumBoard, getHeaderSection } from "./html";
-import { openAddTask } from "./taskAdd";
-import { taskDel } from "./taskDel";
-import { openUpdateTask } from "./taskUpdate";
+import { aside } from "../views/aside";
+import {
+    createMainTitle,
+    createSection,
+    createItemBoard,
+} from "../views/utils";
+import {
+    getHeaderSection,
+    getScrumBoard,
+    getItemScrumBoard,
+} from "../views/htmlBoard";
+import { openAddTask } from "./task";
+import { taskDel } from "../models/taskDel";
+import { openUpdateTask } from "../controller/task";
 
-export function openBoard(list = null) {
+export function openBoard(list) {
     if (!board) {
         createMainTitle(getHeaderSection("ScrumBoard"));
         createSection("board", getScrumBoard());

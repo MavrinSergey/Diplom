@@ -1,4 +1,9 @@
-import { bindDraggableCards } from "./dnd";
+import { bindDraggableCards } from "../views/dnd";
+
+export function openModal(getForm) {
+    createModal("screener");
+    createModal("form", getForm);
+}
 
 export function createNameUser(content = null) {
     const btnSign = document.getElementById("btnSign");
