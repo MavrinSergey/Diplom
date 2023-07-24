@@ -1,26 +1,27 @@
 import { getSignForm, getAddTaskForm } from "./html";
-import { createModal, createNameUser } from "./utils";
+import { createNameUser } from "./utils";
+import { createModal } from "../commonUtils";
 import { sendRequest } from "../requests";
 import { openBoard } from "../board/board";
 
-const requestRegistr = "http://127.0.0.1:8000/users/";
+const requestRegistr = "http://127.0.0.1:8000/api/user/";
 const requestLogin = "http://127.0.0.1:8000/api/token/";
 const requestTask = "http://127.0.0.1:8000/api/v1/task/";
 
-let access = "";
+export let access = "";
 let refresh = "";
 
 export function openSign() {
     openModal(getSignForm());
-}
-
-export function openAddTask() {
-    openModal(getAddTaskForm());
+    eventHandlerOpenSign();
 }
 
 function openModal(getForm) {
     createModal("screener");
     createModal("form", getForm);
+}
+function eventHandlerOpenSign() {
+    const obj = {};
     const screener = document.querySelector(".screener");
     const modal = document.getElementById("form");
     const wrapper = document.querySelector(".wrapper");
@@ -38,47 +39,39 @@ function openModal(getForm) {
     });
 
     screener.addEventListener("click", dropModalWindow);
-
-    function dropModalWindow() {
-        screener.remove();
-        modal.remove();
-    }
-
     signIn.addEventListener("submit", submitForm);
     signUp.addEventListener("submit", submitForm);
 
     function submitForm(event) {
-        const obj = {};
-        // Отменяем стандартное поведение браузера с отправкой формы
         event.preventDefault();
-        // event.target — это HTML-элемент form
         const formData = new FormData(event.target);
         // Собираем данные формы в объект
         formData.forEach((value, key) => (obj[key] = value));
-        // console.log('с формы')
-        // console.log(obj)
         sendRequest("POST", requestLogin, access, obj)
             .then((data) => saveToken(data))
             .catch((err) => console.log(err));
         event.target.reset(); /* Сбрасывает форму */
         dropModalWindow(); /* закрывает окно*/
     }
+    function dropModalWindow() {
+        screener.remove();
+        modal.remove();
+    }
 }
 
 function saveToken(data) {
     access = data.access;
     refresh = data.refresh;
-    // console.log(access)
-    // console.log(refresh)
+
     sendRequest("GET", requestTask, access)
-        .then((data) => Name(data))
+        .then((data) => loadingBoard(data))
         .catch((err) => console.log(err));
 }
 
-function Name(params) {
+function loadingBoard(data) {
+    console.log(data);
     if (!document.getElementById("btnSign").querySelector("a")) {
-        createNameUser(params.name + params.surname);
+        createNameUser(data.name + data.surname);
     }
-    // console.log(params)
-    openBoard(params);
+    openBoard(data);
 }

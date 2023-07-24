@@ -1,3 +1,4 @@
+import { eventChangeStatusTask } from "./taskUpdate"
 let currentDroppable = null;
 let placeholder;
 let isDraggingStarted = false;
@@ -115,6 +116,7 @@ const onMouseUp = () => {
 
   // Process empty columns without items
   processEmptySections();
+  eventChangeStatusTask();
 };
 
 const onMouseDown = (event) => {

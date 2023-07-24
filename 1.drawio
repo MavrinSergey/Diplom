@@ -1,0 +1,22 @@
+<mxfile host="65bd71144e">
+    <diagram id="3kwJvNakhJCogwI_Gvxu" name="Страница 1">
+        <mxGraphModel dx="668" dy="423" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="VIEW&lt;br&gt;все функции создающие html&lt;br&gt;commonUtils&lt;br&gt;Utils&lt;br&gt;html popUp&lt;br&gt;html board&lt;br&gt;&lt;br&gt;5файлов" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="20" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="MODELS&lt;br&gt;aside.js&lt;br&gt;board.js&lt;br&gt;dnd.js&lt;br&gt;taskAdd&lt;br&gt;taskDel&lt;br&gt;taskUpdate&lt;br&gt;popUpSign" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="20" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="API&lt;br&gt;requests" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="20" width="120" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Все адреса запросов вынести либо в отдельный файл либо в файл requests&lt;br&gt;&lt;br&gt;Тоже самое с access и refresh" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="200" width="160" height="160" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

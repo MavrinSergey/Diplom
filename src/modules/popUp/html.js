@@ -10,11 +10,11 @@ export function getSignForm() {
                     <label for="">Email</label>
                 </div>
                 <div class="sign__inputBox">
-                    <input type="password" name="password1" autocomplete="new-password" required>
+                    <input type="password" name="password" autocomplete="new-password" required>
                     <label>Password</label>
                 </div>
                 <div class="sign__inputBox">
-                    <input type="password" name="password2" autocomplete="new-password" required>
+                    <input type="password" name="password" autocomplete="new-password" required>
                     <label>Password</label>
                 </div>
                 <button type="submit" class="sign__submit btn">Registr</button>
@@ -54,35 +54,31 @@ export function getSignForm() {
 }
 
 export function getAddTaskForm() {
-    return `
-    <div class="wrapper">
-            <div class="form">
-                <div class="form-wrapper taskAdd" id="taskAdd">
-                    <form action="">
-                        <h2 class="taskAdd__title">Add descriptions task</h2>
-                        <div class="taskAdd__inputBox">
-                            <input type="text" name="title" required />
-                            <label for="title">Title</label>
-                        </div>
-                        <div class="taskAdd__inputBox">
-                            <input type="text" name="description" required />
-                            <label for="description">Description</label>
-                        </div>
-                        <div class="taskAdd__inputBox">
-                            <input type="date" name="date_creation" required />
-                        </div>
-                        <div class="taskAdd__inputBox">
-                            <input type="date" name="update_date" required />
-                        </div>
-                        <div class="taskAdd__inputBox">
-                            <input type="date" name="expiration" required />
-                        </div>
-                        <button type="submit" class="taskAdd__submit btn">
-                            Login
-                        </button>
-                    </form>
+    return `<div class="wrapper">
+                <div class="form">
+                    <div class="form-wrapper taskAdd" id="taskAdd">
+                        <form action="">
+                            <h2 class="taskAdd__title">Add descriptions task</h2>
+                            <div class="taskAdd__inputBox">
+                                <input type="text" name="title" required />
+                                <label for="title">Title</label>
+                            </div>
+                            <div class="taskAdd__inputBox">
+                                <input type="text" name="description" required />
+                                <label for="description">Description</label>
+                            </div>
+                            <div class="taskAdd__inputBox">
+                                <input type="date" name="date_creation" required />
+                            </div>
+                            <div class="taskAdd__inputBox">
+                                <input type="date" name="update_date" required />
+                            </div>
+                            <div class="taskAdd__inputBox">
+                                <input type="date" name="expiration" required />
+                            </div>
+                            <button type="submit" class="taskAdd__submit btn">Login</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-`;
+            </div>`;
 }

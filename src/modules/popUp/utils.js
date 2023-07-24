@@ -1,16 +1,8 @@
-export function createModal(title, content = null) {
-  const modal = document.createElement('div')
-  modal.classList.add(title)
-  modal.id = title
-  modal.innerHTML = `${content}`
-  document.body.appendChild(modal)
-}
-
 export function createNameUser(content = null) {
-  const btnSign = document.getElementById("btnSign");
-  const openFormSign = document.getElementById("open-form-sign");
-  const name = document.createElement('a')
-  name.href = '#';
-  name.innerHTML = `${content}`
-  btnSign.insertBefore(name, openFormSign);
+    const btnSign = document.getElementById("btnSign");
+    const openFormSign = document.getElementById("open-form-sign");
+    const name = document.createElement("a");
+    name.href = "#";
+    name.innerHTML = `${content}`;
+    btnSign.insertBefore(name, openFormSign);
 }

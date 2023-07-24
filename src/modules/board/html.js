@@ -2,22 +2,22 @@ export function getScrumBoard() {
     return `
     <div class="column col-sm-3">
         <div class="board-column-header">В работу</div>
-        <div class="board-column-content-wrapper" id="to-work"></div>
+        <div class="board-column-content-wrapper" id="col1"></div>
     </div>
 
     <div class="column col-sm-3">
         <div class="board-column-header">В работе</div>
-        <div class="board-column-content-wrapper"  id="in-work"></div>
+        <div class="board-column-content-wrapper"  id="col2"></div>
     </div>
     
     <div class="column col-sm-3">
         <div class="board-column-header">На согласовании</div>
-        <div class="board-column-content-wrapper" id="agreement"></div>
+        <div class="board-column-content-wrapper" id="col3"></div>
     </div>
 
     <div class="column col-sm-3">
         <div class="board-column-header">Завершено</div>
-        <div class="board-column-content-wrapper" id="completed"></div>
+        <div class="board-column-content-wrapper" id="col4"></div>
     </div>
   `;
 }
@@ -46,7 +46,46 @@ export function getItemScrumBoard(
 export function getHeaderSection(title = null) {
     return `<div><h2>${title}</h2></div>
     <div class="btn-group-section">
-    <button class="btn" id="add-task">Add task</button>
-    <button class="btn" id="delete">Delete</button>
+    <button class="btn" id="task-add">Add task</button>
+    <button class="btn" id="task-delete">Delete</button>
+    <button class="btn" id="task-update">Update</button>
     </div>`;
+}
+
+export function getAddTaskForm() {
+    return `<div class="wrapper">
+    <div class="form">
+        <div class="form-wrapper taskAdd" id="taskAdd">
+            <form action="">
+                <h2 class="taskAdd__title">Add descriptions task</h2>
+                <div class="taskAdd__inputBox">
+                    <input type="text" name="title" required />
+                    <label for="title">Title</label>
+                </div>
+                <div class="taskAdd__inputBox">
+                    <input type="text" name="description" required />
+                    <label for="description">Description</label>
+                </div>
+                <div class="taskAdd__inputBox">
+                    <input type="date" name="lead_time" required />
+                </div>
+                <div class="taskAdd__inputBox">
+                    <input type="text" name="project" required />
+                    <label for="project">project</label>
+                </div>
+                <div class="taskAdd__inputBox">
+                    <input type="text" name="status" required />
+                    <label for="status">status</label>
+                </div>
+                <div class="taskAdd__inputBox">
+                    <input type="text" name="user" required />
+                    <label for="user">user</label>
+                </div>
+                <button type="submit" class="taskAdd__submit btn">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+</div>`;
 }
