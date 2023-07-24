@@ -1,8 +1,8 @@
 import { openModal } from "../views/utils";
 import { getSignForm } from "../views/htmlPopUp";
-import { authenticationAuthorizationRegistration } from "./../models/auth";
+import { authReg } from "./../models/auth";
 
 export function openSign() {
     openModal(getSignForm());
-    authenticationAuthorizationRegistration();
+    authReg();
 }
