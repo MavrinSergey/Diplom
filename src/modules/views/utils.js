@@ -60,6 +60,13 @@ export function createModal(title, content = "") {
     document.body.appendChild(modal);
 }
 
+export function closeModal() {
+    const screener = document.querySelector(".screener");
+    const modal = document.getElementById("form");
+    screener.remove(); /* закрывает окно*/
+    modal.remove(); /* закрывает окно*/
+}
+
 export function formInObj(event) {
     const obj = {};
     event.preventDefault();
