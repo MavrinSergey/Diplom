@@ -8,9 +8,8 @@ import {
 } from "./../api/requests";
 import { openBoard } from "../controller/board";
 import { openSign } from "../controller/popUpSign";
-import { formInObj, openModal } from "../views/utils";
-import { createModal } from "../views/utils";
-import { getRegErr } from "../views/htmlPopUp";
+import { formInObj, openModal, closeModal } from "../views/utils";
+import { getRegErr, getRegSucc } from "../views/htmlPopUp";
 
 export function authReg() {
     const screener = document.querySelector(".screener");
@@ -49,21 +48,32 @@ export function authReg() {
         screener.remove(); /* закрывает окно*/
         modal.remove(); /* закрывает окно*/
     }
-    function submitReg(event) {
-        sendRequestToken("POST", requestRegistr, formInObj(event))
-            .then((data) => {
-                saveLS(data);
-
+    async function submitReg(event) {
+        try {
+            const data = await sendRequestToken(
+                "POST",
+                requestRegistr,
+                formInObj(event)
+            );
+            saveLS(data);
+            openModal(getRegSucc());
+            setTimeout(() => {
+                closeModal();
                 openSign();
-            })
-            .catch((err) => {
-                if (err.email) {
-                    openModal(getRegErr());
-                } else console.log(err);
-            });
+            }, 2000);
+        } catch (err) {
+            if (err.email) {
+                openModal(getRegErr());
+                setTimeout(() => {
+                    closeModal();
+                    openSign();
+                }, 2000);
+            } else {
+                console.log(err);
+            }
+        }
         event.target.reset(); /* Сбрасывает форму */
-        screener.remove(); /* закрывает окно*/
-        modal.remove(); /* закрывает окно*/
+        closeModal();
     }
 }
 
