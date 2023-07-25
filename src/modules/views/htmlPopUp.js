@@ -93,10 +93,19 @@ export function getAddTaskForm() {
 
 export function getRegErr() {
     return `
-    <div class="regErr">
-        <h3 class="regErr__title">
+    <div class="regReq err">
+        <h3 class="regReq__title">
             Пользователь с таким email уже существует. Введите другой
             email и попробуйте снова.
+        </h3>
+    </div>`;
+}
+
+export function getRegSucc() {
+    return `
+    <div class="regReq succ">
+        <h3 class="regReq__title">
+            Вы успешно зарегистрировались. Теперь можете авторизоваться.
         </h3>
     </div>`;
 }
