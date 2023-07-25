@@ -23,7 +23,7 @@ export function taskDel() {
         const check = item.querySelector("input");
         if (check.checked === true) {
             const url = requestTaskDel + `${item.dataset.item}/`;
-            sendRequest("DELETE", url, access)
+            sendRequest("DELETE", url, localStorage.getItem("access"))
                 .then(() => item.remove())
                 .catch((err) => console.log(err));
         }

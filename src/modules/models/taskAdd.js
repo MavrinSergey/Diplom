@@ -19,7 +19,7 @@ export function formTaskAdd() {
         const formData = new FormData(event.target);
         // Собираем данные формы в объект
         formData.forEach((value, key) => (obj[key] = value));
-        sendRequest("POST", requestTask, access, obj)
+        sendRequest("POST", requestTask, localStorage.getItem("access"), obj)
             .then((data) => getNewTask(data))
             .catch((err) => console.log(err));
         event.target.reset(); /* Сбрасывает форму */

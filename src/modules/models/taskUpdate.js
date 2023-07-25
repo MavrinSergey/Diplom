@@ -20,7 +20,7 @@ export function formTaskUpd() {
         const formData = new FormData(event.target);
         // Собираем данные формы в объект
         formData.forEach((value, key) => (obj[key] = value));
-        sendRequest("PUT", url, access, obj)
+        sendRequest("PUT", url, localStorage.getItem("access"), obj)
             .then((data) => {
                 const items = document.querySelectorAll(
                     ".board-item:not(.emptySectionHiddenLesson)"
