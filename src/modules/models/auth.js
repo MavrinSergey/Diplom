@@ -2,16 +2,15 @@ import {
     sendRequestToken,
     sendRequest,
     requestLogin,
-    access,
     saveToken,
     requestTask,
     requestRegistr,
 } from "./../api/requests";
 import { openBoard } from "../controller/board";
 import { openSign } from "../controller/popUpSign";
+import { formInObj } from "../views/utils";
 
 export function authReg() {
-    const obj = {};
     const screener = document.querySelector(".screener");
     const modal = document.getElementById("form");
     const wrapper = document.querySelector(".wrapper");
@@ -36,14 +35,10 @@ export function authReg() {
     signUp.addEventListener("submit", submitReg);
 
     function submitAuth(event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        // Собираем данные формы в объект
-        formData.forEach((value, key) => (obj[key] = value));
-        sendRequestToken("POST", requestLogin, obj)
+        sendRequestToken("POST", requestLogin, formInObj(event))
             .then((data) => {
                 saveToken(data);
-                sendRequest("GET", requestTask, access)
+                sendRequest("GET", requestTask, localStorage.getItem("access"))
                     .then((data) => loadingBoard(data))
                     .catch((err) => console.log(err));
             })
@@ -53,14 +48,9 @@ export function authReg() {
         modal.remove(); /* закрывает окно*/
     }
     function submitReg(event) {
-        console.log("форма регистрации");
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        // Собираем данные формы в объект
-        formData.forEach((value, key) => (obj[key] = value));
-        sendRequestToken("POST", requestRegistr, obj)
+        sendRequestToken("POST", requestRegistr, formInObj(event))
             .then((data) => {
-                console.log(data);
+                saveLS(data);
                 openSign();
             })
             .catch((err) => console.log(err));
@@ -68,6 +58,13 @@ export function authReg() {
         screener.remove(); /* закрывает окно*/
         modal.remove(); /* закрывает окно*/
     }
+}
+
+export function saveLS(data) {
+    console.log(data);
+    localStorage.setItem("name", data.first_name);
+    localStorage.setItem("email", data.email);
+    localStorage.setItem("surname", data.last_name);
 }
 
 export function loadingBoard(data) {
