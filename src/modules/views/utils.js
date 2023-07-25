@@ -59,3 +59,11 @@ export function createModal(title, content = null) {
     modal.innerHTML = `${content}`;
     document.body.appendChild(modal);
 }
+
+export function formInObj(event) {
+    const obj = {};
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    formData.forEach((value, key) => (obj[key] = value));
+    return obj;
+}
