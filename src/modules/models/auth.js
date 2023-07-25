@@ -8,7 +8,9 @@ import {
 } from "./../api/requests";
 import { openBoard } from "../controller/board";
 import { openSign } from "../controller/popUpSign";
-import { formInObj } from "../views/utils";
+import { formInObj, openModal } from "../views/utils";
+import { createModal } from "../views/utils";
+import { getRegErr } from "../views/htmlPopUp";
 
 export function authReg() {
     const screener = document.querySelector(".screener");
@@ -51,9 +53,14 @@ export function authReg() {
         sendRequestToken("POST", requestRegistr, formInObj(event))
             .then((data) => {
                 saveLS(data);
+
                 openSign();
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                if (err.email) {
+                    openModal(getRegErr());
+                } else console.log(err);
+            });
         event.target.reset(); /* Сбрасывает форму */
         screener.remove(); /* закрывает окно*/
         modal.remove(); /* закрывает окно*/

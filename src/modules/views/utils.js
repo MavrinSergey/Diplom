@@ -52,7 +52,7 @@ export function createItemBoard(col, content = null, count = 0) {
     bindDraggableCards();
 }
 
-export function createModal(title, content = null) {
+export function createModal(title, content = "") {
     const modal = document.createElement("div");
     modal.classList.add(title);
     modal.id = title;

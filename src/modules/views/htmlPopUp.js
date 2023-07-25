@@ -90,3 +90,13 @@ export function getAddTaskForm() {
     </div>
 </div>`;
 }
+
+export function getRegErr() {
+    return `
+    <div class="regErr">
+        <h3 class="regErr__title">
+            Пользователь с таким email уже существует. Введите другой
+            email и попробуйте снова.
+        </h3>
+    </div>`;
+}
