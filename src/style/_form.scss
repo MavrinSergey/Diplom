@@ -26,7 +26,7 @@
 }
 
 .form-wrapper,
-.regErr {
+.regReq {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,9 +37,6 @@
     height: 100%;
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-.regErr {
-    border: 5px solid #e91e63;
 }
 
 .wrapper.animate-signUp .form-wrapper.sign-in {
@@ -190,4 +187,7 @@
             text-decoration: underline;
         }
     }
+}
+
+.err {
 }

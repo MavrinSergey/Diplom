@@ -35,18 +35,27 @@ export function authReg() {
     signIn.addEventListener("submit", submitAuth);
     signUp.addEventListener("submit", submitReg);
 
-    function submitAuth(event) {
-        sendRequestToken("POST", requestLogin, formInObj(event))
-            .then((data) => {
-                saveToken(data);
-                sendRequest("GET", requestTask, localStorage.getItem("access"))
-                    .then((data) => loadingBoard(data))
-                    .catch((err) => console.log(err));
-            })
-            .catch((err) => console.log(err));
-        event.target.reset(); /* Сбрасывает форму */
-        screener.remove(); /* закрывает окно*/
-        modal.remove(); /* закрывает окно*/
+    async function submitAuth(event) {
+        try {
+            const loginData = await sendRequestToken(
+                "POST",
+                requestLogin,
+                formInObj(event)
+            );
+            saveToken(loginData);
+
+            const taskData = await sendRequest(
+                "GET",
+                requestTask,
+                localStorage.getItem("access")
+            );
+            loadingBoard(taskData);
+
+            event.target.reset(); /* Сбрасывает форму */
+            closeModal();
+        } catch (err) {
+            console.log(err);
+        }
     }
     async function submitReg(event) {
         try {
@@ -55,34 +64,34 @@ export function authReg() {
                 requestRegistr,
                 formInObj(event)
             );
-            saveLS(data);
+            // saveLS(data);
             openModal(getRegSucc());
             setTimeout(() => {
                 closeModal();
                 openSign();
             }, 2000);
         } catch (err) {
-            if (err.email) {
-                openModal(getRegErr());
-                setTimeout(() => {
-                    closeModal();
-                    openSign();
-                }, 2000);
-            } else {
-                console.log(err);
-            }
+            console.log(err);
+            openModal(getRegErr(err.email[0]));
+            setTimeout(() => {
+                closeModal();
+                openSign();
+                const wrapper = document.querySelector(".wrapper");
+                wrapper.classList.add("animate-signIn");
+                wrapper.classList.remove("animate-signUp");
+            }, 2000);
         }
         event.target.reset(); /* Сбрасывает форму */
         closeModal();
     }
 }
 
-export function saveLS(data) {
-    console.log(data);
-    localStorage.setItem("name", data.first_name);
-    localStorage.setItem("email", data.email);
-    localStorage.setItem("surname", data.last_name);
-}
+// export function saveLS(data) {
+//     console.log(data);
+//     localStorage.setItem("name", data.first_name);
+//     localStorage.setItem("email", data.email);
+//     localStorage.setItem("surname", data.last_name);
+// }
 
 export function loadingBoard(data) {
     console.log(data);
