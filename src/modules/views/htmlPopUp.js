@@ -17,7 +17,7 @@ export function getSignForm() {
                     <input type="password" name="password" autocomplete="new-password" required>
                     <label>Password</label>
                 </div>
-                <button type="submit" class="sign__submit btn">Registr</button>
+                <button type="submit" class="sign__submit btn">Register</button>
                 <div class="sign__link">
                     <p>Already have an account?
                         <a href="#" class="signIn-link">Sign In</a>
@@ -91,13 +91,10 @@ export function getAddTaskForm() {
 </div>`;
 }
 
-export function getRegErr() {
+export function getRegErr(str) {
     return `
     <div class="regReq err">
-        <h3 class="regReq__title">
-            Пользователь с таким email уже существует. Введите другой
-            email и попробуйте снова.
-        </h3>
+        <h3 class="regReq__title">${str}</h3>
     </div>`;
 }
 

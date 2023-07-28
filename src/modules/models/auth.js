@@ -54,7 +54,12 @@ export function authReg() {
             event.target.reset(); /* Сбрасывает форму */
             closeModal();
         } catch (err) {
-            console.log(err);
+            // console.log(err.detail);
+            openModal(getRegErr(err.detail));
+            setTimeout(() => {
+                closeModal();
+                openSign();
+            }, 2500);
         }
     }
     async function submitReg(event) {
@@ -69,9 +74,9 @@ export function authReg() {
             setTimeout(() => {
                 closeModal();
                 openSign();
-            }, 2000);
+            }, 2500);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
             openModal(getRegErr(err.email[0]));
             setTimeout(() => {
                 closeModal();
@@ -85,13 +90,6 @@ export function authReg() {
         closeModal();
     }
 }
-
-// export function saveLS(data) {
-//     console.log(data);
-//     localStorage.setItem("name", data.first_name);
-//     localStorage.setItem("email", data.email);
-//     localStorage.setItem("surname", data.last_name);
-// }
 
 export function loadingBoard(data) {
     console.log(data);
