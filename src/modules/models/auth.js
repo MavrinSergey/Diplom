@@ -44,23 +44,22 @@ export function authReg() {
             );
             saveToken(loginData);
 
-            const taskData = await sendRequest(
-                "GET",
-                requestTask,
-                localStorage.getItem("access")
-            );
-            loadingBoard(taskData);
-
             event.target.reset(); /* Сбрасывает форму */
             closeModal();
         } catch (err) {
-            // console.log(err.detail);
+            console.log(err);
             openModal(getRegErr(err.detail));
             setTimeout(() => {
                 closeModal();
                 openSign();
             }, 2500);
         }
+        const taskData = await sendRequest(
+            "GET",
+            requestTask,
+            localStorage.getItem("access")
+        );
+        loadingBoard(taskData);
     }
     async function submitReg(event) {
         try {

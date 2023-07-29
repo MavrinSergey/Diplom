@@ -12,6 +12,9 @@ import {
 import { openAddTask } from "./task";
 import { taskDel } from "../models/taskDel";
 import { openUpdateTask } from "../controller/task";
+import { createNewTask } from "../models/taskAdd";
+
+export let listTask = [];
 
 export function openBoard(list) {
     if (!board) {
@@ -20,19 +23,9 @@ export function openBoard(list) {
     }
     // console.log(list);
     list.forEach((task) => {
-        createItemBoard(
-            task.status,
-            getItemScrumBoard(
-                task.title,
-                task.date_creation,
-                task.update_date,
-                task.lead_time,
-                task.id
-            ),
-            task.id
-        );
+        listTask.push(createNewTask(task));
     });
-
+    console.log(listTask);
     const addTask = document.getElementById("task-add");
     const deleteTask = document.getElementById("task-delete");
     const updateTask = document.getElementById("task-update");
