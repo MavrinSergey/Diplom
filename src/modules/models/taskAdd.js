@@ -1,35 +1,45 @@
 import { sendRequest, requestTask, access } from "../api/requests";
-import { createItemBoard } from "../views/utils";
+import { closeModal, createItemBoard, formInObj } from "../views/utils";
 import { getItemScrumBoard } from "../views/htmlBoard";
+import { Task } from "./../models/Task";
 
 export function formTaskAdd() {
     const screener = document.querySelector(".screener");
     const modal = document.getElementById("form");
     const taskAdd = document.getElementById("taskAdd");
 
-    screener.addEventListener("click", () => {
-        screener.remove();
-        modal.remove();
-    });
+    screener.addEventListener("click", closeModal);
     taskAdd.addEventListener("submit", submitForm);
 
     function submitForm(event) {
-        const obj = {};
         event.preventDefault();
-        const formData = new FormData(event.target);
-        // Собираем данные формы в объект
-        formData.forEach((value, key) => (obj[key] = value));
-        sendRequest("POST", requestTask, localStorage.getItem("access"), obj)
-            .then((data) => getNewTask(data))
-            .catch((err) => console.log(err));
+        sendRequest(
+            "POST",
+            requestTask,
+            localStorage.getItem("access"),
+            formInObj(event)
+        )
+            .then((data) => createNewTask(data))
+            .catch((err) => {
+                console.log(err);
+            });
         event.target.reset(); /* Сбрасывает форму */
-        screener.remove();
-        modal.remove();
+        closeModal();
     }
 }
 
-export function getNewTask(task) {
-    console.log(task);
+export function createNewTask(task) {
+    const newTask = new Task(
+        task.id,
+        task.title,
+        task.description,
+        task.date_creation,
+        task.update_date,
+        task.lead_time,
+        task.project_id,
+        task.status_id,
+        task.user_id
+    );
     createItemBoard(
         task.status,
         getItemScrumBoard(
@@ -41,4 +51,5 @@ export function getNewTask(task) {
         ),
         task.id
     );
+    return newTask;
 }

@@ -1,5 +1,5 @@
 import { sendRequest, requestTask, access } from "./../api/requests";
-import { getNewTask } from "../models/taskAdd";
+import { createNewTask } from "../models/taskAdd";
 
 export function formTaskUpd() {
     const screener = document.querySelector(".screener");
@@ -31,7 +31,7 @@ export function formTaskUpd() {
                         item.remove();
                     }
                 });
-                getNewTask(data);
+                createNewTask(data);
             })
             .catch((err) => console.log(err));
         event.target.reset(); /* Сбрасывает форму */
