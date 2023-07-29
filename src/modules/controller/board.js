@@ -1,25 +1,16 @@
 import { aside } from "../views/aside";
-import {
-    createMainTitle,
-    createSection,
-    createItemBoard,
-} from "../views/utils";
-import {
-    getHeaderSection,
-    getScrumBoard,
-    getItemScrumBoard,
-} from "../views/htmlBoard";
-import { openAddTask } from "./task";
+import { createElMain } from "../views/utils";
+import { getHeaderSection, getScrumBoard } from "../views/htmlBoard";
 import { taskDel } from "../models/taskDel";
-import { openUpdateTask } from "../controller/task";
+import { openAddTask, openUpdateTask } from "../controller/task";
 import { createNewTask } from "../models/taskAdd";
 
 export let listTask = [];
 
 export function openBoard(list) {
     if (!board) {
-        createMainTitle(getHeaderSection("ScrumBoard"));
-        createSection("board", getScrumBoard());
+        createElMain("main__title", getHeaderSection("ScrumBoard"));
+        createElMain("board", getScrumBoard());
     }
     // console.log(list);
     list.forEach((task) => {

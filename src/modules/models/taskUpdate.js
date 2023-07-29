@@ -1,4 +1,4 @@
-import { sendRequest, requestTask, access } from "./../api/requests";
+import { sendRequest, requestTask } from "./../api/requests";
 import { createNewTask } from "../models/taskAdd";
 
 export function formTaskUpd() {

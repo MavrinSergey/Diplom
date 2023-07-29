@@ -53,12 +53,11 @@ export function getSignForm() {
 `;
 }
 
-export function getAddTaskForm() {
+export function getAddUpdTaskForm(str) {
     return `<div class="wrapper">
-    <div class="form">
         <div class="form-wrapper taskAdd" id="taskAdd">
             <form action="">
-                <h2 class="taskAdd__title">Add descriptions task</h2>
+                <h2 class="taskAdd__title">${str} descriptions task</h2>
                 <div class="taskAdd__inputBox">
                     <input type="text" name="title" required />
                     <label for="title">Title</label>
@@ -87,8 +86,7 @@ export function getAddTaskForm() {
                 </button>
             </form>
         </div>
-    </div>
-</div>`;
+    </div>`;
 }
 
 export function getRegErr(str) {

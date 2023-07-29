@@ -8,7 +8,7 @@ import {
 } from "./../api/requests";
 import { openBoard } from "../controller/board";
 import { openSign } from "../controller/popUpSign";
-import { formInObj, openModal, closeModal } from "../views/utils";
+import { formInObj, closeModal, createModal, createHTML } from "../views/utils";
 import { getRegErr, getRegSucc } from "../views/htmlPopUp";
 
 export function authReg() {
@@ -43,23 +43,22 @@ export function authReg() {
                 formInObj(event)
             );
             saveToken(loginData);
-
-            event.target.reset(); /* Сбрасывает форму */
-            closeModal();
+            event.target.reset();
+            screener.remove();
+            modal.remove();
+            const taskData = await sendRequest(
+                "GET",
+                requestTask,
+                localStorage.getItem("access")
+            );
+            loadingBoard(taskData);
         } catch (err) {
             console.log(err);
-            openModal(getRegErr(err.detail));
+            createModal("popUp", getRegErr(err.detail));
             setTimeout(() => {
-                closeModal();
-                openSign();
+                closeModal("popUp");
             }, 2500);
         }
-        const taskData = await sendRequest(
-            "GET",
-            requestTask,
-            localStorage.getItem("access")
-        );
-        loadingBoard(taskData);
     }
     async function submitReg(event) {
         try {
@@ -68,25 +67,20 @@ export function authReg() {
                 requestRegistr,
                 formInObj(event)
             );
-            // saveLS(data);
-            openModal(getRegSucc());
+            createModal("popUp", getRegSucc());
             setTimeout(() => {
-                closeModal();
+                screener.remove();
+                modal.remove();
                 openSign();
             }, 2500);
         } catch (err) {
-            // console.log(err);
-            openModal(getRegErr(err.email[0]));
+            console.log(err);
+            createModal("popUp", getRegErr(err.email[0]));
             setTimeout(() => {
-                closeModal();
-                openSign();
-                const wrapper = document.querySelector(".wrapper");
-                wrapper.classList.add("animate-signIn");
-                wrapper.classList.remove("animate-signUp");
-            }, 2000);
+                closeModal("popUp");
+            }, 2500);
         }
-        event.target.reset(); /* Сбрасывает форму */
-        closeModal();
+        event.target.reset();
     }
 }
 

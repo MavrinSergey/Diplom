@@ -1,14 +1,16 @@
-import { sendRequest, requestTask, access } from "../api/requests";
+import { sendRequest, requestTask } from "../api/requests";
 import { closeModal, createItemBoard, formInObj } from "../views/utils";
 import { getItemScrumBoard } from "../views/htmlBoard";
 import { Task } from "./../models/Task";
 
 export function formTaskAdd() {
     const screener = document.querySelector(".screener");
-    const modal = document.getElementById("form");
     const taskAdd = document.getElementById("taskAdd");
 
-    screener.addEventListener("click", closeModal);
+    screener.addEventListener("click", () => {
+        closeModal("screener");
+        closeModal("form");
+    });
     taskAdd.addEventListener("submit", submitForm);
 
     function submitForm(event) {
@@ -19,12 +21,15 @@ export function formTaskAdd() {
             localStorage.getItem("access"),
             formInObj(event)
         )
-            .then((data) => createNewTask(data))
+            .then((data) => {
+                createNewTask(data);
+                event.target.reset();
+                closeModal("screener");
+                closeModal("form");
+            })
             .catch((err) => {
                 console.log(err);
             });
-        event.target.reset(); /* Сбрасывает форму */
-        closeModal();
     }
 }
 

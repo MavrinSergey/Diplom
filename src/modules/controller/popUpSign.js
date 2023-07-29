@@ -1,8 +1,10 @@
-import { openModal } from "../views/utils";
+import { createModal, openModal } from "../views/utils";
 import { getSignForm } from "../views/htmlPopUp";
 import { authReg } from "./../models/auth";
 
 export function openSign() {
-    openModal(getSignForm());
+    createModal("screener");
+    createModal("form", getSignForm());
+    // openModal(getSignForm());
     authReg();
 }
