@@ -48,37 +48,43 @@ export function getSignForm() {
                 </div>
             </form>
         </div>
-
     </div>
 `;
 }
 
-export function getAddUpdTaskForm(str) {
+export function getAddUpdTaskForm(
+    str = "",
+    title = "",
+    description = "",
+    project = "",
+    status = "",
+    user = ""
+) {
     return `<div class="wrapper">
         <div class="form-wrapper taskAdd" id="taskAdd">
             <form action="">
                 <h2 class="taskAdd__title">${str} descriptions task</h2>
                 <div class="taskAdd__inputBox">
-                    <input type="text" name="title" required />
+                    <input type="text" name="title" value="${title}" required />
                     <label for="title">Title</label>
                 </div>
                 <div class="taskAdd__inputBox">
-                    <input type="text" name="description" required />
+                    <input type="text" name="description" value="${description}" required />
                     <label for="description">Description</label>
                 </div>
                 <div class="taskAdd__inputBox">
                     <input type="date" name="lead_time" required />
                 </div>
                 <div class="taskAdd__inputBox">
-                    <input type="text" name="project" required />
+                    <input type="text" name="project" value="${project}" required />
                     <label for="project">project</label>
                 </div>
                 <div class="taskAdd__inputBox">
-                    <input type="text" name="status" required />
+                    <input type="text" name="status" value="${status}" required />
                     <label for="status">status</label>
                 </div>
                 <div class="taskAdd__inputBox">
-                    <input type="text" name="user" required />
+                    <input type="text" name="user" value="${user}" required />
                     <label for="user">user</label>
                 </div>
                 <button type="submit" class="taskAdd__submit btn">

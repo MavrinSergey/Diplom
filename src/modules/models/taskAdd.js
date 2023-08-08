@@ -41,9 +41,9 @@ export function createNewTask(task) {
         task.date_creation,
         task.update_date,
         task.lead_time,
-        task.project_id,
-        task.status_id,
-        task.user_id
+        task.project,
+        task.status,
+        task.user
     );
     createItemBoard(
         task.status,

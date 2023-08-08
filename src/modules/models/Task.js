@@ -6,9 +6,9 @@ export class Task {
         date_creation,
         update_date,
         lead_time,
-        project_id,
-        status_id,
-        user_id
+        project,
+        status,
+        user
     ) {
         this.id = id;
         this.title = title;
@@ -16,9 +16,9 @@ export class Task {
         this.date_creation = date_creation;
         this.update_date = update_date;
         this.lead_time = lead_time;
-        this.project_id = project_id;
-        this.status_id = status_id;
-        this.user_id = user_id;
+        this.project = project;
+        this.status = status;
+        this.user = user;
     }
     getId() {
         return this.id;
@@ -39,12 +39,12 @@ export class Task {
         return this.lead_time;
     }
     getProject_id() {
-        return this.project_id;
+        return this.project;
     }
     getStatus_id() {
-        return this.status_id;
+        return this.status;
     }
     getUser_id() {
-        return this.user_id;
+        return this.user;
     }
 }

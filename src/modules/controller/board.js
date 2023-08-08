@@ -31,6 +31,24 @@ export function openBoard(list) {
     });
 
     updateTask.addEventListener("click", () => {
-        openUpdateTask();
+        const items = document.querySelectorAll(
+            ".board-item:not(.emptySectionHiddenLesson)"
+        );
+        let count = 0;
+        let dataItemCheck;
+        items.forEach((item) => {
+            const check = item.querySelector("input");
+            if (check.checked === true) {
+                count = count + 1;
+                if (count === 1) {
+                    dataItemCheck = item.dataset.item;
+                }
+            }
+        });
+        if (count > 1) {
+            console.log("Выберите только один элемент для обновления");
+        } else {
+            openUpdateTask(dataItemCheck);
+        }
     });
 }
