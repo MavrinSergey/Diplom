@@ -1,53 +1,46 @@
 * {
-  box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
 }
 
 body {
-  background: linear-gradient(#2196f3, #e91e63);
-  font-family: $ff;
-  position: relative;
-
-  scroll-behavior: auto;
-  scrollbar-color: #458245; /* «цвет ползунка» «цвет полосы скроллбара» */
-  scrollbar-width: thin;  /* толщина */
-
+    background: linear-gradient($bg, $bg2);
+    font-family: $ff;
+    scroll-behavior: auto;
+    scrollbar-color: $scrl-color; /* «цвет ползунка» «цвет полосы скроллбара» */
+    scrollbar-width: thin; /* толщина */
 }
 /* полоса прокрутки (скроллбар) */
 ::-webkit-scrollbar {
-  width: 10px; /* ширина для вертикального скролла */
+    width: 10px; /* ширина для вертикального скролла */
 }
 
 /* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
-  background-color: $bg;
-  border-radius: 9em;
-  box-shadow: inset 1px 1px 10px #f3faf7;
+    background-color: $bg;
+    border-radius: 9em;
+    box-shadow: inset 1px 1px 10px #f3faf7;
 }
 
 .window {
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  float: right;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    float: right;
 }
 
 .main {
-  width: 100%;
-  overflow: hidden;
+    width: 100%;
+    overflow: hidden;
 }
 
 .main__title {
-  height: 15vh;
-  // text-align: center;
-  h2 {
-    text-align: center;
-  }
+    height: 15vh;
+    h2 {
+        text-align: center;
+    }
 }
 
-section {
-  height: 100%;
-  width: 100%;
-  margin: 0;
+.hidden {
+    display: none;
 }
-
