@@ -65,10 +65,30 @@ function taskUpd() {
     return res;
 }
 
-export function eventChangeStatusTaskMouseUp() {
-    console.log("Фиксация после перетаскивания");
-}
+export function eventChangeStatusTaskMouseUp(event) {
+    const idDragEl = event.dataset.item;
+    let obj;
 
-export function eventChangeStatusTaskMouseDown() {
-    console.log("Захват для перетаскивания");
+    listTask.forEach((item) => {
+        if (item.id == idDragEl) {
+            obj = item;
+        }
+    });
+
+    document
+        .querySelectorAll(".board-column-content-wrapper")
+        .forEach((item) => {
+            if (item.contains(event)) {
+                obj.status = item.id.slice(-1);
+            }
+        });
+    const url = requestTask + `${idDragEl}/`;
+
+    sendRequest("PUT", url, localStorage.getItem("access"), obj)
+        .then((data) => {
+            console.log("с сервера");
+            console.log(data);
+            taskUpdate(listTask, idDragEl, data);
+        })
+        .catch((err) => console.log(err));
 }
