@@ -1,4 +1,5 @@
-import { eventChangeStatusTask } from "../models/taskUpdate";
+import { eventChangeStatusTaskMouseUp } from "../models/taskUpdate";
+import { eventChangeStatusTaskMouseDown } from "../models/taskUpdate";
 let currentDroppable = null;
 let placeholder;
 let isDraggingStarted = false;
@@ -118,7 +119,7 @@ const onMouseUp = () => {
 
     // Process empty columns without items
     processEmptySections();
-    eventChangeStatusTask();
+    eventChangeStatusTaskMouseUp();
 };
 
 const onMouseDown = (event) => {
@@ -127,6 +128,7 @@ const onMouseDown = (event) => {
     initialMovingElementPageXY.set(movingElement);
     document.addEventListener("mousemove", onMouseMove);
     movingElement.onmouseup = onMouseUp;
+    eventChangeStatusTaskMouseDown();
 };
 
 // Initial pageX and pageY of movingElement, at the moment the drag begins

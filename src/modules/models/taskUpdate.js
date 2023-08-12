@@ -65,6 +65,10 @@ function taskUpd() {
     return res;
 }
 
-export function eventChangeStatusTask() {
-    console.log("Сработала после перетаскивания");
+export function eventChangeStatusTaskMouseUp() {
+    console.log("Фиксация после перетаскивания");
+}
+
+export function eventChangeStatusTaskMouseDown() {
+    console.log("Захват для перетаскивания");
 }
