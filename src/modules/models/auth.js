@@ -12,6 +12,7 @@ import { formInObj, closeModal, createModal, createHTML } from "../views/utils";
 import { getRegErr, getRegSucc } from "../views/htmlPopUp";
 
 export function authReg() {
+    const openFormSign = document.getElementById("open-form-sign");
     const screener = document.querySelector(".screener");
     const modal = document.getElementById("form");
     const wrapper = document.querySelector(".wrapper");
@@ -52,6 +53,7 @@ export function authReg() {
                 localStorage.getItem("access")
             );
             loadingBoard(taskData);
+            openFormSign.remove();
         } catch (err) {
             console.log(err);
             createModal("popUp", getRegErr(err.detail));
@@ -86,7 +88,7 @@ export function authReg() {
 
 export function loadingBoard(data) {
     console.log(data);
-    if (!document.getElementById("btnSign").querySelector("a")) {
+    if (!document.getElementById("open-form-sign").querySelector("a")) {
         // createNameUser(data.name + data.surname);
     }
     openBoard(data);

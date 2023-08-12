@@ -2,14 +2,15 @@ import { sendRequest, requestTask } from "../api/requests";
 import { closeModal, createItemBoard, formInObj } from "../views/utils";
 import { getItemScrumBoard } from "../views/htmlBoard";
 import { Task } from "./../models/Task";
+import { listTask } from "../controller/board";
 
 export function formTaskAdd() {
     const screener = document.querySelector(".screener");
-    const taskAdd = document.getElementById("taskAdd");
+    const taskAdd = document.getElementById("form-task");
 
     screener.addEventListener("click", () => {
         closeModal("screener");
-        closeModal("form");
+        closeModal("form-task");
     });
     taskAdd.addEventListener("submit", submitForm);
 
@@ -23,9 +24,11 @@ export function formTaskAdd() {
         )
             .then((data) => {
                 createNewTask(data);
+                listTask.push(data);
                 event.target.reset();
+
                 closeModal("screener");
-                closeModal("form");
+                closeModal("form-task");
             })
             .catch((err) => {
                 console.log(err);

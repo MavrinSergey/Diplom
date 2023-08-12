@@ -6,17 +6,18 @@ import { listTask } from "./board";
 
 export function openAddTask() {
     createModal("screener");
-    createModal("form", getAddUpdTaskForm("Add"));
+    createModal("form-task", getAddUpdTaskForm("Add"));
     formTaskAdd();
 }
 
 export function openUpdateTask(numTask) {
-    console.log(numTask);
+    console.log(`id задачи ${numTask}`);
     let task = listTask.find((task) => task.id == numTask);
+    console.log(`Из html`);
     console.log(task);
     createModal("screener");
     createModal(
-        "form",
+        "form-task",
         getAddUpdTaskForm(
             "Update",
             task.title,

@@ -1,16 +1,17 @@
 import { sendRequest, requestTask } from "./../api/requests";
 import { createNewTask } from "../models/taskAdd";
+import { listTask } from "../controller/board";
+import { taskUpdate } from "../views/utils";
 
 export function formTaskUpd() {
     const screener = document.querySelector(".screener");
-    const modal = document.getElementById("form");
-    const taskAdd = document.getElementById("taskAdd");
+    const formUpd = document.getElementById("form-task");
 
     screener.addEventListener("click", () => {
         screener.remove();
-        modal.remove();
+        formUpd.remove();
     });
-    taskAdd.addEventListener("submit", submitForm);
+    formUpd.addEventListener("submit", submitForm);
 
     function submitForm(event) {
         const idTaskUpdate = taskUpd();
@@ -31,13 +32,18 @@ export function formTaskUpd() {
                         item.remove();
                     }
                 });
+                console.log("с сервера");
+                console.log(data);
                 createNewTask(data);
+                taskUpdate(listTask, idTaskUpdate, data);
+                console.log("список задач");
+                console.log(listTask);
             })
             .catch((err) => console.log(err));
         event.target.reset(); /* Сбрасывает форму */
 
         screener.remove();
-        modal.remove();
+        formUpd.remove();
     }
 }
 

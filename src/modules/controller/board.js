@@ -45,7 +45,7 @@ export function openBoard(list) {
                 }
             }
         });
-        if (count > 1) {
+        if (count != 1) {
             console.log("Выберите только один элемент для обновления");
         } else {
             openUpdateTask(dataItemCheck);

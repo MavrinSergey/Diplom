@@ -60,10 +60,14 @@ export function createElMain(title, content = null) {
     main.appendChild(section);
 }
 
-// export function createMainTitle(content = null) {
-//     const title = document.createElement("div");
-//     title.classList.add("main__title");
-//     title.id = "main__title";
-//     title.innerHTML = `${content}`;
-//     main.appendChild(title);
-// }
+export function taskUpdate(list, id, data) {
+    list.forEach((item) => {
+        if (item.id == id) {
+            item.title = data.title;
+            item.description = data.description;
+            item.project = data.project;
+            item.status = data.status;
+            item.user = data.user;
+        }
+    });
+}

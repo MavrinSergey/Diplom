@@ -60,39 +60,62 @@ export function getAddUpdTaskForm(
     status = "",
     user = ""
 ) {
-    return `<div class="wrapper">
-        <div class="form-wrapper taskAdd" id="taskAdd">
-            <form action="">
-                <h2 class="taskAdd__title">${str} descriptions task</h2>
-                <div class="taskAdd__inputBox">
-                    <input type="text" name="title" value="${title}" required />
+    return `<form action="">
+                <h2 class="form-task__title">${str} descriptions task</h2>
+                <div class="form-task__inputBox">
+                    <input
+                        type="text"
+                        name="title"
+                        value="${title}"
+                        required=""
+                    />
                     <label for="title">Title</label>
                 </div>
-                <div class="taskAdd__inputBox">
-                    <input type="text" name="description" value="${description}" required />
+                <div class="form-task__inputBox">
+                    <input
+                        type="text"
+                        name="description"
+                        value="${description}"
+                        required=""
+                    />
                     <label for="description">Description</label>
                 </div>
-                <div class="taskAdd__inputBox">
-                    <input type="date" name="lead_time" required />
+                <div class="form-task__inputBox">
+                    <input type="date" name="lead_time" required="" />
                 </div>
-                <div class="taskAdd__inputBox">
-                    <input type="text" name="project" value="${project}" required />
+                <div class="form-task__inputBox">
+                    <input
+                        type="text"
+                        name="project"
+                        value="${project}"
+                        required=""
+                    />
                     <label for="project">project</label>
                 </div>
-                <div class="taskAdd__inputBox">
-                    <input type="text" name="status" value="${status}" required />
+                <div class="form-task__inputBox">
+                    <input
+                        type="text"
+                        name="status"
+                        value="${status}"
+                        required=""
+                    />
                     <label for="status">status</label>
                 </div>
-                <div class="taskAdd__inputBox">
-                    <input type="text" name="user" value="${user}" required />
+                <div class="form-task__inputBox">
+                    <input
+                        type="text"
+                        name="user"
+                        value="${user}"
+                        required=""
+                    />
                     <label for="user">user</label>
                 </div>
-                <button type="submit" class="taskAdd__submit btn">
-                    Login
-                </button>
-            </form>
-        </div>
-    </div>`;
+                <div class="form-task__inputBox">
+                    <button type="submit" class="form-task__submit btn">
+                        Add
+                    </button>
+                </div>
+            </form>`;
 }
 
 export function getRegErr(str) {
