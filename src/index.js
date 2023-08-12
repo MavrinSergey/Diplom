@@ -1,12 +1,9 @@
-import './index.html';
-import './index.scss';
-import { board } from './modules/board/board';
-import { openModal } from './modules/sign/formSignIn-Up';
+import "./index.html";
+import "./index.scss";
+import { board } from "./modules/controller/board";
+import { openSign } from "./modules/controller/popUpSign";
 
-const openFormSign  = document.getElementById("btnSign");
-const openScrumBoard  = document.getElementById("open-ScrumBoard");
+const openFormSign = document.getElementById("open-form-sign");
+const openScrumBoard = document.getElementById("open-ScrumBoard");
 
-openFormSign.addEventListener("click", openModal);
-// openScrumBoard.addEventListener("click", openBoard);
-
-// Эта строчка для ДЗ по GIT 1-ый комит
+openFormSign.addEventListener("click", openSign);

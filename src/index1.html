@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+        <!-- <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="img/favicon.png" type="image/png"> -->
 
-    <title>Scrum</title>
-  </head>
+        <title>Scrum</title>
+    </head>
 
-  <body>
-    <!-- Бокавая навигация -->
-    <aside id="#" class="sidebar">
-      <a href="#" id="open-ScrumBoard">ScrumBoard</a>
-      <a href="#" class="bord-section">All projects</a>
-      <a href="#" class=""></a>
-      <a href="#" class=""></a>
-      <a href="#" class=""></a>
-      <a href="#" class=""></a>
-      <a href="#" class=""></a>
-    </aside>
+    <body>
+        <!-- Бокавая навигация -->
+        <aside id="#" class="sidebar">
+            <a href="#" id="open-ScrumBoard">ScrumBoard</a>
+            <a href="#" class="bord-section">All projects</a>
+            <a href="#" class=""></a>
+            <a href="#" class=""></a>
+            <a href="#" class=""></a>
+            <a href="#" class=""></a>
+            <a href="#" class=""></a>
+        </aside>
 
-    <div class="window">
-      <header class="header">
-        <!-- Навигация в шапке -->
-        <div class="header__menu">
-          <div class="btn-group btn-left">
-            <button class="open-aside btn" id="#">☰</button>
-            <button class="btn">Кнопка</button>
-            <button class="btn">Еще одна</button>
-            <button class="btn">Их может быть больше</button>
-          </div>
-          <div id="btnSign" class="btn-group btn-right">
-            <button id="open-form-sign" class="btn">Sign</button>
-          </div>
+        <div class="window">
+            <header class="header">
+                <!-- Навигация в шапке -->
+                <div class="header__menu">
+                    <div class="btn-group btn-left">
+                        <button class="open-aside btn" id="#">☰</button>
+                        <button class="btn">Кнопка</button>
+                        <button class="btn">Еще одна</button>
+                        <button class="btn">Их может быть больше</button>
+                    </div>
+                    <div id="btnSign" class="btn-group btn-right">
+                        <button id="open-form-sign" class="btn">Sign</button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main" id="main">
+                <div class="main__title" id="main__title">
+                    <button class="btn">Add task</button>
+                </div>
+            </main>
         </div>
-      </header>
 
-      <main class="main" id="main">
-        <div class="main__title" id="main__title">
-          <button class="btn">Add task</button>
-        </div>
-      </main>
-    </div>
-
-    <footer class="footer">
-      <h2>Footer</h2>
-    </footer>
-  </body>
+        <footer class="footer">
+            <h2>Footer</h2>
+        </footer>
+    </body>
 </html>
 
 <!-- карточка задачи -->
 <div class="board-item" draggable="true">
-  <div class="board-item__content">
-    <div class="board-item__content-header">
-      <h4>Реформировать проект Django+React</h4>
-      <input type="checkbox" name="select-task" id="select-task" />
+    <div class="board-item__content">
+        <div class="board-item__content-header">
+            <h4>Реформировать проект Django+React</h4>
+            <input type="checkbox" name="select-task" id="select-task" />
+        </div>
+        <div class="board-item__content-date">
+            <div class="board-item__content-date-row">
+                Дата создания: <span>2023-06-27</span>
+            </div>
+            <div class="board-item__content-date-row">
+                Дата обнавления: <span>2023-06-27</span>
+            </div>
+            <div class="board-item__content-date-row">
+                Дата завершения: <span>2023-07-31</span>
+            </div>
+        </div>
     </div>
-    <div class="board-item__content-date">
-      <div class="board-item__content-date-row">
-        Дата создания: <span>2023-06-27</span>
-      </div>
-      <div class="board-item__content-date-row">
-        Дата обнавления: <span>2023-06-27</span>
-      </div>
-      <div class="board-item__content-date-row">
-        Дата завершения: <span>2023-07-31</span>
-      </div>
-    </div>
-  </div>
 </div>

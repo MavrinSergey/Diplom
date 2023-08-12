@@ -1,28 +1,43 @@
+export function getHeaderSection(title = null) {
+    return `<div><h2>${title}</h2></div>
+    <div class="btn-group-section">
+    <button class="btn" id="task-add">Add task</button>
+    <button class="btn" id="task-delete">Delete</button>
+    <button class="btn" id="task-update">Update</button>
+    </div>`;
+}
+
 export function getScrumBoard() {
     return `
     <div class="column col-sm-3">
         <div class="board-column-header">В работу</div>
-        <div class="board-column-content-wrapper" id="to-work"></div>
+        <div class="board-column-content-wrapper" id="col1"></div>
     </div>
 
     <div class="column col-sm-3">
         <div class="board-column-header">В работе</div>
-        <div class="board-column-content-wrapper"  id="in-work"></div>
+        <div class="board-column-content-wrapper"  id="col2"></div>
     </div>
     
     <div class="column col-sm-3">
         <div class="board-column-header">На согласовании</div>
-        <div class="board-column-content-wrapper" id="agreement"></div>
+        <div class="board-column-content-wrapper" id="col3"></div>
     </div>
 
     <div class="column col-sm-3">
         <div class="board-column-header">Завершено</div>
-        <div class="board-column-content-wrapper" id="completed"></div>
+        <div class="board-column-content-wrapper" id="col4"></div>
     </div>
-  `
+  `;
 }
 
-export function getItemScrumBoard(title = null, dateCreation = null, updateDate = null, leadTime = null, id) {
+export function getItemScrumBoard(
+    title,
+    dateCreation,
+    updateDate,
+    leadTime,
+    id
+) {
     return `
     <div class="board-item__content">
     <div class="board-item__content-header">
@@ -34,15 +49,5 @@ export function getItemScrumBoard(title = null, dateCreation = null, updateDate 
         <div class="board-item__content-date-row">Дата обнавления: <span>${updateDate}</span></div>
         <div class="board-item__content-date-row">Дата завершения: <span>${leadTime}</span></div>
     </div>
-  `
-}
-
-export function getHeaderSection(title = null) {
-    return `<div><h2>${title}</h2></div>
-    <div class="btn-group-section">
-    <button class="btn" id="add-task">Add task</button>
-    <button class="btn" id="delete">Delete</button>
-    <button class="btn">Еще одна</button>
-    <button class="btn">Их может быть больше</button>
-    </div>`
+  `;
 }

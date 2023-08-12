@@ -1,0 +1,17 @@
+.form-task {
+    height: 600px;
+    form {
+        width: 400px;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: initial;
+        background: #fff;
+    }
+}
+
+.form-task__inputBox {
+    position: relative;
+    margin: 0 10%;
+}

@@ -1,8 +1,22 @@
-.header__menu {
+.header {
+    // position: fixed;
+    height: 65px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.hidden {
-    display: none;
+.header__left {
+    margin-left: 1vw;
+}
+
+.header__right {
+    margin-right: 15vw;
+    // float: right;
+    // display: flex;
+    // justify-content: space-between;
+
+    // a {
+    //     margin: 11px 20px;
+    // }
 }
