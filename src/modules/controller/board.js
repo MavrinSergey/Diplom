@@ -16,7 +16,7 @@ export function openBoard(list) {
     list.forEach((task) => {
         listTask.push(createNewTask(task));
     });
-    console.log(listTask);
+    // console.log(listTask);
     const addTask = document.getElementById("task-add");
     const deleteTask = document.getElementById("task-delete");
     const updateTask = document.getElementById("task-update");

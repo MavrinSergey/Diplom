@@ -87,7 +87,7 @@ export function authReg() {
 }
 
 export function loadingBoard(data) {
-    console.log(data);
+    // console.log(data);
     if (!document.getElementById("open-form-sign").querySelector("a")) {
         // createNameUser(data.name + data.surname);
     }
