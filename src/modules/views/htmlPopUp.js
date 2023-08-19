@@ -97,9 +97,16 @@ export function getAddUpdTaskForm(
                         type="text"
                         name="status"
                         value="${status}"
+                        list="statusList"
                         required=""
                     />
                     <label for="status">status</label>
+                    <datalist id="statusList">
+                        <option value="В работу"></option>
+                        <option value="В работе"></option>
+                        <option value="На согласовании"></option>
+                        <option value="Завершено"></option>
+                    </datalist>
                 </div>
                 <div class="form-task__inputBox">
                     <input
