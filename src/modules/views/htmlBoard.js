@@ -36,18 +36,25 @@ export function getItemScrumBoard(
     dateCreation,
     updateDate,
     leadTime,
-    id
+    id,
+    desc
 ) {
     return `
     <div class="board-item__content">
-    <div class="board-item__content-header">
-        <h4>${title}</h4>
-        <input type="checkbox" name="${id}" id="${id}">
-    </div>
-    <div class="board-item__content-date">
-        <div class="board-item__content-date-row">Дата создания: <span>${dateCreation}</span></div>
-        <div class="board-item__content-date-row">Дата обнавления: <span>${updateDate}</span></div>
-        <div class="board-item__content-date-row">Дата завершения: <span>${leadTime}</span></div>
+        <div class="board-item__content-header">
+            <h4>${title}</h4>
+            <input type="checkbox" name="${id}" id="${id}">
+        </div>
+
+        <div class="board-item__content-flex">
+            <div class="board-item__content-desc">${desc}</div>
+            <div class="board-item__content-date">
+                <div class="board-item__content-date-row">создание: <span>${dateCreation}</span></div>
+                <div class="board-item__content-date-row">обнавлено: <span>${updateDate}</span></div>
+                <div class="board-item__content-date-row">завершение: <span>${leadTime}</span></div>
+            </div>
+        </div>
+        <div class="board-item__content-respons">Фамилия</div>
     </div>
   `;
 }
