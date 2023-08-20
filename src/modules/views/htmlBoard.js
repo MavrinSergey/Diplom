@@ -10,23 +10,23 @@ export function getHeaderSection(title = null) {
 export function getScrumBoard() {
     return `
     <div class="column col-sm-3">
-        <div class="board-column-header">В работу</div>
-        <div class="board-column-content-wrapper" id="col1"></div>
+        <div class="board-column-header">to-work</div>
+        <div class="board-column-content-wrapper" id="to-work"></div>
     </div>
 
     <div class="column col-sm-3">
-        <div class="board-column-header">В работе</div>
-        <div class="board-column-content-wrapper"  id="col2"></div>
+        <div class="board-column-header">in-work</div>
+        <div class="board-column-content-wrapper"  id="in-work"></div>
     </div>
     
     <div class="column col-sm-3">
-        <div class="board-column-header">На согласовании</div>
-        <div class="board-column-content-wrapper" id="col3"></div>
+        <div class="board-column-header">agreement</div>
+        <div class="board-column-content-wrapper" id="agreement"></div>
     </div>
 
     <div class="column col-sm-3">
-        <div class="board-column-header">Завершено</div>
-        <div class="board-column-content-wrapper" id="col4"></div>
+        <div class="board-column-header">completed</div>
+        <div class="board-column-content-wrapper" id="completed"></div>
     </div>
   `;
 }

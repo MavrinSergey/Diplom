@@ -31,7 +31,7 @@ export function createNameUser(content = null) {
 }
 
 export function createItemBoard(col, content = null, count = 0) {
-    const column = document.getElementById(`col${col}`);
+    const column = document.getElementById(`${col}`);
     if (!column) {
         throw new Error(
             `Column element with id col${col} not found in document`
