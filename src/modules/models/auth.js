@@ -12,7 +12,6 @@ import { formInObj, closeModal, createModal, createHTML } from "../views/utils";
 import { getRegErr, getRegSucc } from "../views/htmlPopUp";
 
 export function authReg() {
-    const openFormSign = document.getElementById("open-form-sign");
     const screener = document.querySelector(".screener");
     const modal = document.getElementById("form");
     const wrapper = document.querySelector(".wrapper");
@@ -33,35 +32,10 @@ export function authReg() {
         screener.remove();
         modal.remove();
     });
-    signIn.addEventListener("submit", submitAuth);
+    signIn.addEventListener("submit", () => submitAuth(event, "submit"));
     signUp.addEventListener("submit", submitReg);
 
-    async function submitAuth(event) {
-        try {
-            const loginData = await sendRequestToken(
-                "POST",
-                requestLogin,
-                formInObj(event)
-            );
-            saveToken(loginData);
-            event.target.reset();
-            screener.remove();
-            modal.remove();
-            const taskData = await sendRequest(
-                "GET",
-                requestTask,
-                localStorage.getItem("access")
-            );
-            loadingBoard(taskData);
-            openFormSign.remove();
-        } catch (err) {
-            console.log(err);
-            createModal("popUp", getRegErr(err.detail));
-            setTimeout(() => {
-                closeModal("popUp");
-            }, 2500);
-        }
-    }
+    // submitAuth();
     async function submitReg(event) {
         try {
             const data = await sendRequestToken(
@@ -77,7 +51,7 @@ export function authReg() {
             }, 2500);
         } catch (err) {
             console.log(err);
-            createModal("popUp", getRegErr(err.email[0]));
+            createModal("popUp", getRegErr(err));
             setTimeout(() => {
                 closeModal("popUp");
             }, 2500);
@@ -93,3 +67,43 @@ export function loadingBoard(data) {
     }
     openBoard(data);
 }
+
+export const submitAuth = async function (event, eventType) {
+    const openFormSign = document.getElementById("open-form-sign");
+    const screener = document.querySelector(".screener");
+    const modal = document.getElementById("form");
+
+    console.log(eventType);
+    try {
+        let accessToken = localStorage.getItem("access");
+        let refreshToken = localStorage.getItem("refresh");
+
+        // Проверка наличия токенов в локальном хранилище
+        if (!accessToken && !refreshToken && eventType === "submit") {
+            const loginData = await sendRequestToken(
+                "POST",
+                requestLogin,
+                formInObj(event)
+            );
+            saveToken(loginData);
+            accessToken = localStorage.getItem("access");
+            refreshToken = localStorage.getItem("refresh");
+        }
+        // Использование сохраненных токенов для отправки запроса
+        const taskData = await sendRequest("GET", requestTask, accessToken);
+        loadingBoard(taskData);
+        if (eventType == "submit") {
+            console.log("по сабмиту");
+            event.target.reset;
+            screener.remove();
+            modal.remove();
+        }
+        openFormSign.remove();
+    } catch (err) {
+        console.log(err);
+        createModal("popUp", getRegErr(err));
+        setTimeout(() => {
+            closeModal("popUp");
+        }, 2500);
+    }
+};

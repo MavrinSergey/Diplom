@@ -56,7 +56,8 @@ export function createNewTask(task) {
             task.update_date,
             task.lead_time,
             task.id,
-            task.description
+            task.description,
+            task.user
         ),
         task.id
     );

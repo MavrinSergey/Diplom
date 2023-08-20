@@ -79,7 +79,7 @@ export function eventChangeStatusTaskMouseUp(event) {
         .querySelectorAll(".board-column-content-wrapper")
         .forEach((item) => {
             if (item.contains(event)) {
-                obj.status = item.id.slice(-1);
+                obj.status = item.id;
             }
         });
     const url = requestTask + `${idDragEl}/`;

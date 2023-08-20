@@ -37,7 +37,8 @@ export function getItemScrumBoard(
     updateDate,
     leadTime,
     id,
-    desc
+    desc,
+    user
 ) {
     return `
     <div class="board-item__content">
@@ -54,7 +55,7 @@ export function getItemScrumBoard(
                 <div class="board-item__content-date-row">завершение: <span>${leadTime}</span></div>
             </div>
         </div>
-        <div class="board-item__content-respons">Фамилия</div>
+        <div class="board-item__content-respons">${user}</div>
     </div>
   `;
 }

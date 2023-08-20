@@ -56,7 +56,6 @@ export function getAddUpdTaskForm(
     str = "",
     title = "",
     description = "",
-    project = "",
     status = "",
     user = ""
 ) {
@@ -82,15 +81,6 @@ export function getAddUpdTaskForm(
                 </div>
                 <div class="form-task__inputBox">
                     <input type="date" name="lead_time" required="" />
-                </div>
-                <div class="form-task__inputBox">
-                    <input
-                        type="text"
-                        name="project"
-                        value="${project}"
-                        required=""
-                    />
-                    <label for="project">project</label>
                 </div>
                 <div class="form-task__inputBox">
                     <input
