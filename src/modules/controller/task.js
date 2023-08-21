@@ -22,7 +22,6 @@ export function openUpdateTask(numTask) {
             "Update",
             task.title,
             task.description,
-            task.project,
             task.status,
             task.user
         )

@@ -6,7 +6,6 @@ export class Task {
         date_creation,
         update_date,
         lead_time,
-        project,
         status,
         user
     ) {
@@ -16,7 +15,6 @@ export class Task {
         this.date_creation = date_creation;
         this.update_date = update_date;
         this.lead_time = lead_time;
-        this.project = project;
         this.status = status;
         this.user = user;
     }
@@ -37,9 +35,6 @@ export class Task {
     }
     getLead_time() {
         return this.lead_time;
-    }
-    getProject_id() {
-        return this.project;
     }
     getStatus_id() {
         return this.status;

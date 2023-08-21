@@ -44,7 +44,6 @@ export function createNewTask(task) {
         task.date_creation,
         task.update_date,
         task.lead_time,
-        task.project,
         task.status,
         task.user
     );

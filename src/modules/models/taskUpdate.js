@@ -83,6 +83,7 @@ export function eventChangeStatusTaskMouseUp(event) {
             }
         });
     const url = requestTask + `${idDragEl}/`;
+    console.log(obj);
 
     sendRequest("PUT", url, localStorage.getItem("access"), obj)
         .then((data) => {
