@@ -1,7 +1,7 @@
 import { sendRequest, requestTask } from "../api/requests";
 import { closeModal, createItemBoard, formInObj } from "../views/utils";
 import { getItemScrumBoard } from "../views/htmlBoard";
-import { Task } from "./../models/Task";
+import { Task } from "./Task";
 import { listTask } from "../controller/board";
 
 export function formTaskAdd() {
@@ -45,7 +45,9 @@ export function createNewTask(task) {
         task.update_date,
         task.lead_time,
         task.status,
-        task.user
+        task.user,
+        task.user_first_name,
+        task.user_last_name
     );
     createItemBoard(
         task.status,
@@ -56,7 +58,8 @@ export function createNewTask(task) {
             task.lead_time,
             task.id,
             task.description,
-            task.user
+            task.user_first_name,
+            task.user_last_name
         ),
         task.id
     );

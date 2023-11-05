@@ -66,7 +66,7 @@ const onMouseMove = (event) => {
     const elementBelow = getElementBelow(movingElement, "by-center");
     if (!elementBelow) return;
     let droppableBelow = elementBelow.closest(".board-item");
-    if (currentDroppable != droppableBelow) {
+    if (currentDroppable !== droppableBelow) {
         //  currentDroppable=null
         //    if we were not over a droppable element before this event
         //  droppableBelow=null
@@ -168,7 +168,7 @@ const getElementCoordinates = (node, searchCoordsBy) => {
     const rect = node.getBoundingClientRect();
     return {
         top:
-            searchCoordsBy == "by-center"
+            searchCoordsBy === "by-center"
                 ? rect.top + rect.height / 2
                 : rect.top + 10,
         left: rect.left + rect.width / 2,

@@ -1,4 +1,4 @@
-import { bindDraggableCards } from "../views/dnd";
+import { bindDraggableCards } from "./dnd";
 
 export function createModal(title, content = "") {
     const modal = document.createElement("div");
@@ -62,7 +62,7 @@ export function createElMain(title, content = null) {
 
 export function taskUpdate(list, id, data) {
     list.forEach((item) => {
-        if (item.id == id) {
+        if (item.id === id) {
             item.title = data.title;
             item.description = data.description;
             item.project = data.project;

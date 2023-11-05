@@ -12,7 +12,7 @@ export function openAddTask() {
 
 export function openUpdateTask(numTask) {
     console.log(`id задачи ${numTask}`);
-    let task = listTask.find((task) => task.id == numTask);
+    let task = listTask.find((task) => task.id === numTask);
     console.log(`Из html`);
     console.log(task);
     createModal("screener");

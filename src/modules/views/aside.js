@@ -4,7 +4,7 @@ const content = document.querySelector('.open-aside'),
 
 // показать боковую панель
 content.addEventListener("click", () => {
-    if (mySidebar.style.display == "block") {
+    if (mySidebar.style.display === "block") {
         mySidebar.style.display = "none";
         clWindow.style.width = "100vw";
     } else {

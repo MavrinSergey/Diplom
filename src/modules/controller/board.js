@@ -1,8 +1,7 @@
-import { aside } from "../views/aside";
-import { createElMain } from "../views/utils";
+import { createElMain, createNameUser } from "../views/utils";
 import { getHeaderSection, getScrumBoard } from "../views/htmlBoard";
 import { taskDel } from "../models/taskDel";
-import { openAddTask, openUpdateTask } from "../controller/task";
+import { openAddTask, openUpdateTask } from "./task";
 import { createNewTask } from "../models/taskAdd";
 
 export let listTask = [];
@@ -45,7 +44,7 @@ export function openBoard(list) {
                 }
             }
         });
-        if (count != 1) {
+        if (count !== 1) {
             console.log("Выберите только один элемент для обновления");
         } else {
             openUpdateTask(dataItemCheck);

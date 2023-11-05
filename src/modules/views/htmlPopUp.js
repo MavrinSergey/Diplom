@@ -83,21 +83,17 @@ export function getAddUpdTaskForm(
                     <input type="date" name="lead_time" required="" />
                 </div>
                 <div class="form-task__inputBox">
-                    <input
-                        type="text"
-                        name="status"
-                        value="${status}"
-                        list="statusList"
-                        required=""
-                    />
+
+                    <select required="">
+                        <option value="to-work">to-work</option>
+                        <option value="in-work">in-work</option>
+                        <option value="agreement">agreement</option>
+                        <option value="completed">completed</option>
+                    </select>
                     <label for="status">status</label>
-                    <datalist id="statusList">
-                        <option value="to-work"></option>
-                        <option value="in-work"></option>
-                        <option value="agreement"></option>
-                        <option value="completed"></option>
-                    </datalist>
                 </div>
+
+            
                 <div class="form-task__inputBox">
                     <input
                         type="text"

@@ -7,7 +7,9 @@ export class Task {
         update_date,
         lead_time,
         status,
-        user
+        user,
+        user_first_name,
+        user_last_name
     ) {
         this.id = id;
         this.title = title;
@@ -17,6 +19,8 @@ export class Task {
         this.lead_time = lead_time;
         this.status = status;
         this.user = user;
+        this.user_first_name = user_first_name;
+        this.user_last_name = user_last_name;
     }
     getId() {
         return this.id;

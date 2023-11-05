@@ -1,14 +1,16 @@
+import jwt_decode from "../../../node_modules/jwt-decode";
+
 import {
     sendRequestToken,
     sendRequest,
     requestLogin,
     saveToken,
     requestTask,
-    requestRegistr,
-} from "./../api/requests";
+    requestReg,
+} from "../api/requests";
 import { openBoard } from "../controller/board";
 import { openSign } from "../controller/popUpSign";
-import { formInObj, closeModal, createModal, createHTML } from "../views/utils";
+import { formInObj, closeModal, createModal } from "../views/utils";
 import { getRegErr, getRegSucc } from "../views/htmlPopUp";
 
 export function authReg() {
@@ -32,17 +34,13 @@ export function authReg() {
         screener.remove();
         modal.remove();
     });
-    signIn.addEventListener("submit", () => submitAuth(event, "submit"));
+    signIn.addEventListener("submit", submitAuth);
     signUp.addEventListener("submit", submitReg);
 
     // submitAuth();
     async function submitReg(event) {
         try {
-            const data = await sendRequestToken(
-                "POST",
-                requestRegistr,
-                formInObj(event)
-            );
+            await sendRequestToken("POST", requestReg, formInObj(event));
             createModal("popUp", getRegSucc());
             setTimeout(() => {
                 screener.remove();
@@ -68,18 +66,19 @@ export function loadingBoard(data) {
     openBoard(data);
 }
 
-export const submitAuth = async function (event, eventType) {
+export const submitAuth = async function (event) {
     const openFormSign = document.getElementById("open-form-sign");
     const screener = document.querySelector(".screener");
     const modal = document.getElementById("form");
 
-    console.log(eventType);
+    // console.log(eventType);
     try {
         let accessToken = localStorage.getItem("access");
         let refreshToken = localStorage.getItem("refresh");
 
         // Проверка наличия токенов в локальном хранилище
-        if (!accessToken && !refreshToken && eventType === "submit") {
+        if (!accessToken && !refreshToken) {
+            console.log("в локальном хранилще токенов нет");
             const loginData = await sendRequestToken(
                 "POST",
                 requestLogin,
@@ -89,15 +88,25 @@ export const submitAuth = async function (event, eventType) {
             accessToken = localStorage.getItem("access");
             refreshToken = localStorage.getItem("refresh");
         }
-        // Использование сохраненных токенов для отправки запроса
+
+        // Проверка срока действия access токена
+        const tokenExpirationTime = jwt_decode(accessToken).exp;
+        const currentTime = Math.floor(Date.now() / 1000);
+        if (tokenExpirationTime < currentTime) {
+            console.log("access токен устарел");
+            // Использование refresh токена для обновления access токена
+            const refreshTokenData = await sendRequestToken(
+                "POST",
+                requestLogin + "refresh/",
+                { refresh: refreshToken }
+            );
+            saveToken(refreshTokenData);
+            accessToken = localStorage.getItem("access");
+        }
+
+        // Использование сохраненного или обновленного access токена для отправки запроса
         const taskData = await sendRequest("GET", requestTask, accessToken);
         loadingBoard(taskData);
-        if (eventType == "submit") {
-            console.log("по сабмиту");
-            event.target.reset;
-            screener.remove();
-            modal.remove();
-        }
         openFormSign.remove();
     } catch (err) {
         console.log(err);

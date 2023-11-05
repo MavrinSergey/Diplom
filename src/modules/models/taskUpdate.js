@@ -1,5 +1,5 @@
-import { sendRequest, requestTask } from "./../api/requests";
-import { createNewTask } from "../models/taskAdd";
+import { sendRequest, requestTask } from "../api/requests";
+import { createNewTask } from "./taskAdd";
 import { listTask } from "../controller/board";
 import { taskUpdate } from "../views/utils";
 
@@ -67,7 +67,7 @@ function taskUpd() {
 
 export function eventChangeStatusTaskMouseUp(event) {
     const idDragEl = event.dataset.item;
-    let obj;
+    let obj = {};
 
     listTask.forEach((item) => {
         if (item.id == idDragEl) {
@@ -82,8 +82,8 @@ export function eventChangeStatusTaskMouseUp(event) {
                 obj.status = item.id;
             }
         });
+
     const url = requestTask + `${idDragEl}/`;
-    console.log(obj);
 
     sendRequest("PUT", url, localStorage.getItem("access"), obj)
         .then((data) => {
